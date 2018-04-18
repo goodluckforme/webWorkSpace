@@ -1,0 +1,10 @@
+.download,
+.mui-bar-tab,
+.copyright
+ {
+	display: none!important;
+}
+
+.mui-bar-nav~.mui-content {
+	padding-top:44px!important;
+}

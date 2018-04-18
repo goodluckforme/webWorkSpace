@@ -1,0 +1,18 @@
+{
+	"examples/actionsheet-plus.html": {
+		"refer": [
+			"index.html"
+		]
+	},
+	"index.html": {
+		"refer": [
+			"examples/actionsheet-plus.html",
+			"examples/actionsheet.html"
+		]
+	},
+	"examples/actionsheet.html": {
+		"refer": [
+			"index.html"
+		]
+	}
+}

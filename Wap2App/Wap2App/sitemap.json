@@ -1,0 +1,428 @@
+{
+	"global": {//global为全局配置，与pages数组中webview对象呈继承关系
+		"webviewParameter": {
+			"titleNView": {
+				"autoBackButton": true,
+				"backgroundColor": "#D74B28",//导航栏背景色
+				"titleColor": "#f7f7f7",//标题颜色
+				"titleSize": "17px",//字体大小
+				"splitLine": {//标题栏的底部分割线，默认不显示底部分割线
+					"color": "#D74B28", //分割线颜色
+					"height": "1px"
+				}
+			},
+			"appendCss": ".download,.mui-bar-tab,header{display:none!important;} .mui-bar-nav~.mui-content,.info,.dcontent{padding-top: 0!important;} .sdcontent{top:0!important;} "
+		},
+		"easyConfig": {
+			"quit": {// 参考文档 【http://ask.dcloud.net.cn/docs/#//ask.dcloud.net.cn/article/12750】 quit
+				"toast": {
+					"showFeedback": false   //默认为true
+				}
+			}
+		}
+	},
+	"pages": [
+		{
+			//首页
+			"webviewId": "__W2A__hello.wap2app.dcloud.io",// 注:此id应该和manifest.json中appid保持一致，一般会创建wap2app时自动生成，不可随意修改
+			"matchUrls": [// 参考文档 【http://ask.dcloud.net.cn/docs/#//ask.dcloud.net.cn/article/12731】
+				{
+					"href": "http://hello.wap2app.dcloud.io"
+				}, {
+					"href": "http://hello.wap2app.dcloud.io/"
+				}, {
+					"hostname": "hello.wap2app.dcloud.io",   // 精确匹配， 默认匹配规则
+					"pathname": "R:^\\/?$"
+				}
+			],
+			"webviewParameter": {// 参考文档【http://ask.dcloud.net.cn/docs/#//ask.dcloud.net.cn/article/12749】
+				"tabBar": {//选项卡配置，仅首页支持
+					"height": "51px",//选项卡高度，默认为50px
+					"list": [
+						{
+							"url": "http://hello.wap2app.dcloud.io"
+						}, {
+							"url": "http://hello.wap2app.dcloud.io/about.html"
+						}
+					]
+				},
+				"titleNView": false
+			}
+		}, {// 默认原生导航栏
+			"webviewId": "titleNView-default",
+			"matchUrls": [
+				{
+					"pathname": "/examples/titleNView.html"
+				}
+			],
+			"webviewParameter": {
+				"titleNView": {
+					"titleText": "默认原生导航栏"
+				}
+			}
+		}, {// 透明渐变原生导航栏
+			"webviewId": "titleNView-trans",
+			"matchUrls": [
+				{
+					"pathname": "/examples/titleNView-transparent.html"
+				}
+			],
+			"webviewParameter": {
+				"titleNView": {
+					"titleText": "透明渐变原生导航栏",
+					"type": "transparent"
+				}
+			}
+		}, {// 自定义原生导航栏
+			"webviewId": "titleNView-btns",
+			"matchUrls": [
+				{
+					"pathname": "/examples/titleNView-btns.html"
+				}
+			],
+			"webviewParameter": {
+				"titleNView": {
+					"titleText": "自定义原生导航栏",
+					"buttons": [
+						{
+							"float": "right",
+							"fontSrc": "_www/fonts/wap2app.ttf",   // 引用本地字体文件
+							"fontSize": "23px",
+							"text": "\uE466",
+							"onclick": "javascript:plus.webview.getWebviewById('titleNView-btns').evalJS('document.querySelector(\\'.mui-icon-search\\')&&document.querySelector(\\'.mui-icon-search\\').click()')"
+						}
+					]
+				}
+			}
+		}, {// 默认下拉刷新
+			"webviewId": "pullToRefresh",
+			"matchUrls": [
+				{
+					"pathname": "/examples/pullrefresh.html"
+				}
+			],
+			"webviewParameter": {
+				"titleNView": {
+					"titleText": "默认下拉刷新"
+				},
+				"pullToRefresh": {
+					"support": true
+				}
+			}
+		}, {// 自定义下拉刷新
+			"webviewId": "pullToRefresh-custorm",
+			"matchUrls": [
+				{
+					"pathname": "/examples/pullrefresh-custorm.html"
+				}
+			],
+			"webviewParameter": {
+				"titleNView": {
+					"titleText": "自定义下拉刷新"
+				}
+			}
+		}, {// 窗口切换动画
+			"webviewId": "animation",
+			"matchUrls": [
+				{
+					"pathname": "/examples/animation.html"
+				}
+			],
+			"easyConfig": {
+				"open": {
+					"animation": {//窗口切换动画配置  参考文档 【http://ask.dcloud.net.cn/docs/#//ask.dcloud.net.cn/article/12750】 -> open.animation
+						"type": "slide-in-bottom",  //窗口动画类型 默认为 slide-in-right
+						"duration": 300
+					}
+				}
+			}
+		}, {// 加载中配置
+			"webviewId": "waiting",
+			"matchUrls": [
+				{
+					"pathname": "/examples/waiting.html"
+				}
+			],
+			"easyConfig": {
+				"open": {
+					"waiting": {// 参考文档 【http://ask.dcloud.net.cn/docs/#//ask.dcloud.net.cn/article/12750】 -> open.waiting
+						"title": "加载中...",
+						"options": {
+							"background": "#dd524d",
+							"color": "#ffffff"
+						}
+					}
+				}
+			}
+		}, {// M站自动不生成
+			"webviewId": "server-not-generate",
+			"matchUrls": [
+				{
+					"pathname": "W:/examples/server-not-generate.*"
+				}
+			],
+			"webviewParameter": {
+				"titleNView": {
+					"titleText": "M站自动不生成"
+				}
+			}
+		}, {// M站自动隐藏
+			"webviewId": "server-hide",
+			"matchUrls": [
+				{
+					"pathname": "/examples/server-hide.html"
+				}
+			],
+			"webviewParameter": {
+				"titleNView": {
+					"titleText": "M站自动隐藏"
+				}
+			}
+		}, {// 客户端注入css
+			"webviewId": "clientAppend",
+			"matchUrls": [
+				{
+					"pathname": "R:\\/examples\\/client-append\\.html"
+				}
+			],
+			"webviewParameter": {
+				"titleNView": {
+					"titleText": "客户端注入css"
+				},
+				"appendCss": ".mui-bar-nav,.download,.mui-bar-footer{display:none!important;} .mui-bar-nav~.mui-content{padding-top: 0!important;}"
+			}
+		}, {// 关闭弹出层
+			"webviewId": "popup",
+			"matchUrls": [
+				{
+					"pathname": "/examples/popup.html"
+				}
+			],
+			"webviewParameter": {
+				"titleNView": {
+					"titleText": "popup关闭"
+				},
+				"appendCss": "header{display:none!important;} .mui-bar-nav~.mui-content{padding-top:0!important;}"
+			},
+			"easyConfig": {
+				"back": {// 参考文档 【http://ask.dcloud.net.cn/docs/#//ask.dcloud.net.cn/article/12750】 back -> before
+					"before": [
+						{
+							"popupSelector": ".mui-poppicker.mui-active",  // 弹出层dom选择器
+							"closeSelector": ".mui-poppicker-btn-cancel",
+							"eventType": "tap"
+						}
+					]
+				}
+			}
+		}, {// 改变页面回退逻辑
+			"webviewId": "changeHistory",
+			"matchUrls": [
+				{
+					"pathname": "R:/examples/page[0-9]+.html"
+				}
+			],
+			"webviewParameter": {
+				"titleNView": {
+					"titleText": "改变页面回退逻辑"
+				}
+			},
+			"easyConfig": {
+				"back": { // 参考文档 【http://ask.dcloud.net.cn/docs/#//ask.dcloud.net.cn/article/12750】 back -> history
+					"history": false
+				}
+			}
+		}, {// 复用前页数据 - 列表页
+			"webviewId": "nviewsList",
+			"matchUrls": [
+				{
+					"pathname": "/examples/listview.php"
+				}
+			],
+			"webviewParameter": {
+				"appendJs": "js/list.js"
+			},
+			"easyConfig": {
+				"open": {
+					"waiting": false
+				}
+			}
+		}, {// 复用前页数据 - NView模板页    此页面包含原生分享案例 【参考文档】（http://ask.dcloud.net.cn/docs/#//ask.dcloud.net.cn/article/12766）
+			"webviewId": "nviewsDetail",
+			"matchUrls": [
+				{
+					"pathname": "/examples/detail.html"
+				}
+			],
+			"webviewParameter": {
+				"titleNView": {
+					"titleText": "新闻详情"
+				},
+				"subNViews": "pages/detail/detail.nview"
+			}
+		}, {// ajax获取服务端数据 - 列表页
+			"webviewId": "nviewAjax",
+			"matchUrls": [
+				{
+					"pathname": "/examples/ajax-nview.html"
+				}
+			]
+		}, {// ajax获取服务端数据 - NView模板电商首页列表页 【NView模板】(http://ask.dcloud.net.cn/article/12757)
+			"webviewId": "nviewAjaxIndex",
+			"matchUrls": [
+				{
+					"pathname": "/examples/nview-indexList.html"
+				}
+			],
+			"webviewParameter": {
+				"titleNView": {
+					"titleText": "电商首页列表页"
+				},
+				"subNViews": "pages/list/nviewAjaxIndex.nview"
+			}
+		}, {// ajax获取服务端数据 - NView模板电商商品列表页
+			"webviewId": "nviewAjaxGoods",
+			"matchUrls": [
+				{
+					"pathname": "/examples/nview-goodsList.html"
+				}
+			],
+			"webviewParameter": {
+				"subNViews": "pages/list/nviewAjaxList.nview",
+				"titleNView": {
+					"titleText": "电商商品列表页",
+					"buttons": [
+						{
+							"float": "right",
+							"fontSrc": "__wap2app.ttf",   // 框架内置ttf文件
+							"fontSize": "23px",
+							"text": "\uE602",
+							"onclick": "javascript:plus.webview.getWebviewById('nviewAjaxGoods').evalJS('document.querySelector(\\'.J-btn-share\\')&&document.querySelector(\\'.J-btn-share\\').click()')"
+						}, {
+							"float": "right",
+							"fontSrc": "__wap2app.ttf",
+							"fontSize": "23px",
+							"text": "\uE604",
+							"onclick": "javascript:plus.webview.getWebviewById('nviewAjaxGoods').evalJS('document.querySelector(\\'#J-collect-btn\\')&&document.querySelector(\\'#J-collect-btn\\').click()')"
+						}
+					]
+				}
+			}
+		}, {// ajax获取服务端数据 - NView模板电商详情页(包含原生轮播图,可点击查看大图)
+			"webviewId": "nviewAjaxDetail",
+			"matchUrls": [
+				{
+					"pathname": "/examples/nview-detail.html"
+				}
+			],
+			"webviewParameter": {
+				"titleNView": {
+					"titleText": "原生轮播图",
+					"type": "transparent",
+					"buttons": [
+						{
+							"float": "right",
+							"fontSrc": "__wap2app.ttf",
+							"fontSize": "23px",
+							"text": "\uE602",
+							"onclick": "javascript:plus.webview.getWebviewById('nviewAjaxDetail').evalJS('document.querySelector(\\'.J-btn-share\\')&&document.querySelector(\\'.J-btn-share\\').click()')"
+						}, {
+							"float": "right",
+							"fontSrc": "__wap2app.ttf",
+							"fontSize": "23px",
+							"text": "\uE604",
+							"onclick": "javascript:plus.webview.getWebviewById('nviewAjaxDetail').evalJS('document.querySelector(\\'.J-detail-collect-btn\\')&&document.querySelector(\\'.J-detail-collect-btn\\').click()')"
+						}
+					]
+				},
+				"subNViews": "pages/list/nviewAjaxImageSlider.nview",
+				"appendCss": "#J-back-prev-page,.J-detail-collect-btn,.J-btn-share{display:none!important;} .product-attr tr td:first-child{width:auto!important;}"
+			}
+		}, {// 视频全屏播放
+			"webviewId": "fullScreen",  // 参考文档【wap2app实现视频全频教程】(http://ask.dcloud.net.cn/article/12933)
+			"matchUrls": [
+				{
+					"pathname": "/examples/fullScreen.html"
+				}
+			],
+			"webviewParameter": {
+				"titleNView": {
+					"titleText": "视频全屏播放"
+				},
+				"appendJs": "js/full-screen.js"
+			}
+		}, {// 原生定位   
+			"webviewId": "geolocation",  // 参考文档【原生定位】(http://ask.dcloud.net.cn/article/12767)
+			"matchUrls": [
+				{
+					"pathname": "/examples/geolocation.html"
+				}
+			]
+		}, {// 原生推送    
+			"webviewId": "push", // 参考文档【manifest.json中推送SDK配置指南 原生推送】(http://ask.dcloud.net.cn/article/34)
+			"matchUrls": [
+				{
+					"pathname": "/examples/push.html"
+				}
+			]
+		}, 
+		{// 打开第三方支付
+			"webviewId": "pay", // 参考文档【manifest.json中支付SDK配置指南 该wap站使用的是微信H5支付】(http://ask.dcloud.net.cn/article/71)
+			"matchUrls": [		// 参考服务端代码【微信支付v3】(https://github.com/dcloudio/H5P.Server/tree/master/payment/wxpayv3)
+				{
+					"pathname": "/examples/donate.html"
+				}
+			],
+			"webviewParameter": {
+				"titleNView": {  
+					"titleText":"微信支付"  
+				}
+			}
+		},
+		{// 二维码扫描
+			"webviewId": "barcode",
+			"matchUrls": [
+				{
+					"pathname": "/examples/barcode_scan.html"
+				}
+			],
+			"webviewParameter": {
+				"titleNView": {
+					"titleText":"二维码扫描"
+				}
+			}
+		},{// 语音识别
+			"webviewId": "speech",
+			"matchUrls": [
+				{
+					"pathname": "/examples/speech.html"
+				}
+			],
+			"webviewParameter": {
+				"titleNView": {
+					"titleText":"语音识别"
+				}
+			}
+		}, {// 图片长按保存
+			"webviewId": "longTap",
+			"matchUrls": [
+				{
+					"pathname": "/examples/longTap.html"
+				}
+			],
+			"webviewParameter": {
+				"titleNView": {
+					"titleText":"图片长按保存"
+				}
+			}
+		}, {//未适配的公共页面，可拦截原生下载和头部导航栏, 注：通配符的规则+放在最后一个节点才能达到适配所有未适配的公共页面效果，适配规则优先级为自上而下查找匹配规则
+			"webviewId": "common",
+			"matchUrls": [
+				{
+					"hostname": "R:.*",
+					"pathname": "R:.*"
+				}
+			]
+		}
+	]
+}
