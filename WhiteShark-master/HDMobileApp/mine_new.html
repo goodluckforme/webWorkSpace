@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/mine_new.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background:  white;">
+			<!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
+			<!--<a id="collection" class=" mui-icon mui-icon-star mui-pull-right"></a>-->
+			<h1 class="mui-title">个人中心</h1>
+		</header>
+		<div id="refreshhuilai">
+			<div class="user_box" id="hide_login">
+				<img src="images/picuser.png">
+				<div class="user_name" id="name_gai">
+					<span id="username">username</span><em cite="user_namexiu"></em>
+				</div>
+				<div class="user_tel">
+					<span class="user_tel_icon"></span>
+					<p id="userphone">18503778776</p>
+				</div>
+			</div>
+			<div id="show_nologin" class="no_user_box" style="display: none;">
+				<!--block-->
+				<img src="images/nouser_pic.png">
+				<button id="btn_login" class="login_now">未登录</button>
+			</div>
+			<div class="mine_main">
+				<p class="mine_main_bg_new"></p>
+				<div class="mine_box_new">
+					<a class="mine_ping_new" id="ping">
+						<span></span>
+						<p>我的评论 &nbsp;&nbsp;My comment</p>
+					</a>
+					<a class="mine_she_new" id="setting">
+						<span></span>
+						<p>设置&nbsp;&nbsp;Set up</p>
+					</a>
+				</div>
+			</div>
+		</div>
+		<script src="js/mui.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/common.js"></script>
+		<!--		<script type="text/javascript" src="js/mine.js"></script>-->
+		<script>
+			mui.init();
+			(function($) {
+				mui.plusReady(function() {
+					islog();
+				});
+				var islog = function() {
+					if(Common.getisLogin() != 1) {
+						document.getElementById("show_nologin").addEventListener('tap', function() {
+							mui.openWindow({
+								id: 'login_new',
+								url: 'mine/login_new.html',
+								styles: {
+									popGesture: 'close',
+								},
+								createNew: false //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+							});
+						});
+						document.getElementById("show_nologin").style.display = "block";
+						document.getElementById("hide_login").style.display = "none";
+					} else {
+						document.getElementById('username').innerHTML = Common.getValueForKey("username");
+						document.getElementById('userphone').innerHTML = Common.getValueForKey("userphone");
+						document.getElementById("hide_login").style.display = "block";
+						document.getElementById("show_nologin").style.display = "none";
+					}
+				}
+				/**
+				 * 更新用户信息
+				 */
+				window.addEventListener('update_mine', function(event) {
+					islog();
+				});
+				/**
+				 * 修改用户名
+				 */
+				mui('#name_gai').on('tap', 'em', function() {
+					mui.openWindow({
+						id: 'name_xiu',
+						url: 'xiu_name.html',
+						styles: {
+							popGesture: 'close',
+						},
+						createNew: false //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+					});
+				});
+				/**   
+				 * 我的评论
+				 */
+				mui('#ping').on('tap', 'p', function() {
+					/**
+					 *	用户未登陆 
+					 */
+					if (Common.getisLogin() != 1) {
+						mui.openWindow({
+							id: 'login_new',
+							url: 'mine/login_new.html',
+							styles: {
+								popGesture: 'close',
+							},
+							createNew: false //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+						});
+					} else{
+						mui.openWindow({
+						id: 'mine_comment',
+						url: 'mine_comment.html',
+						styles: {
+							popGesture: 'close',
+						},
+						createNew: false //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+					});
+					}
+				});
+				/**
+				 * 设置
+				 */
+				mui('#setting').on('tap', 'p', function() {
+					/**
+					 *	用户未登陆 
+					 */
+					if(Common.getisLogin() != 1) {
+						mui.openWindow({
+							id: 'login_new',
+							url: 'mine/login_new.html',
+							styles: {
+								popGesture: 'close',
+							},
+							createNew: false //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+						});
+					} else {
+						mui.openWindow({
+							id: 'setting_new',
+							url: 'mine/setting_new.html',
+							styles: {
+								popGesture: 'close',
+							},
+							createNew: false //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+						});
+					}
+				});
+			}(mui));
+		</script>
+	</body>
+
+</html>

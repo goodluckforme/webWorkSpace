@@ -1,0 +1,48 @@
+{
+	"HDMobileApp/collection.html": {
+		"resources": [
+			"HDMobileApp/collectionList.html"
+		],
+		"refer": [
+			"HDMobileApp/collectionList.html"
+		]
+	},
+	"HDMobileApp/index.html": {
+		"resources": [
+			"HDMobileApp/home_copy.html"
+		],
+		"refer": [
+			"HDMobileApp/collection.html",
+			"HDMobileApp/home_copy.html",
+			"HDMobileApp/mine_new.html"
+		]
+	},
+	"HDMobileApp/collectionList.html": {
+		"refer": [
+			"HDMobileApp/mine/login_new.html"
+		]
+	},
+	"HDMobileApp/search.html": {
+		"refer": [
+			"HDMobileApp/searchResult.html"
+		]
+	},
+	"HDMobileApp/home_copy.html": {
+		"refer": [
+			"HDMobileApp/search.html"
+		]
+	},
+	"HDMobileApp/searchResult.html": {
+		"resources": [
+			"HDMobileApp/searchList.html"
+		],
+		"refer": [
+			"HDMobileApp/searchList.html"
+		]
+	},
+	"HDMobileApp/mine_new.html": {
+		"refer": [
+			"HDMobileApp/mine/login_new.html"
+		]
+	}
+}

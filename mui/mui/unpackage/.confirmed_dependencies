@@ -1,0 +1,22 @@
+{
+	"index.html": {
+		"refer": [
+			"index-menu.html",
+			"examples/picker.html",
+			"examples/range.html",
+			"examples/echarts.html",
+			"examples/locker-dom.html",
+			"examples/im-chat.html",
+			"examples/accordion.html",
+			"examples/best-practices/list-to-detail/listview.html",
+			"examples/setting.html",
+			"examples/beecloud.html",
+			"examples/ajax.html"
+		]
+	},
+	"examples/best-practices/list-to-detail/listview.html": {
+		"refer": [
+			"examples/best-practices/list-to-detail/detail.html"
+		]
+	}
+}

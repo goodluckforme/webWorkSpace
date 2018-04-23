@@ -1,0 +1,394 @@
+#introduce{
+	overflow: hidden;
+}
+#introduce img{
+	width: 80%;
+	max-height: 240px;
+	margin:10px auto;
+	display: block;
+}
+
+/**/
+.mui-preview-image.mui-fullscreen {
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+			
+			.mui-preview-header,
+			.mui-preview-footer {
+				position: absolute;
+				width: 100%;
+				left: 0;
+				z-index: 10;
+			}
+			
+			.mui-preview-header {
+				height: 44px;
+				top: 0;
+			}
+			
+			.mui-preview-footer {
+				height: 50px;
+				bottom: 0px;
+			}
+			
+			.mui-preview-header .mui-preview-indicator {
+				display: block;
+				line-height: 25px;
+				color: #fff;
+				text-align: center;
+				margin: 15px auto 4;
+				width: 70px;
+				background-color: rgba(0, 0, 0, 0.4);
+				border-radius: 12px;
+				font-size: 16px;
+			}
+			
+			.mui-preview-image {
+				display: none;
+				-webkit-animation-duration: 0.5s;
+				animation-duration: 0.5s;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+			}
+			
+			.mui-preview-image.mui-preview-in {
+				-webkit-animation-name: fadeIn;
+				animation-name: fadeIn;
+			}
+			
+			.mui-preview-image.mui-preview-out {
+				background: none;
+				-webkit-animation-name: fadeOut;
+				animation-name: fadeOut;
+			}
+			
+			.mui-preview-image.mui-preview-out .mui-preview-header,
+			.mui-preview-image.mui-preview-out .mui-preview-footer {
+				display: none;
+			}
+			
+			.mui-zoom-scroller {
+				position: absolute;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				-webkit-backface-visibility: hidden;
+			}
+			
+			.mui-zoom {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+			}
+			
+			.mui-slider .mui-slider-group .mui-slider-item img {
+				width: 100%;
+				height: auto;
+				vertical-align:middle;
+			}
+			
+			.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+				width: 100%;
+			}
+			
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+				display: inline-table;
+			}
+			
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			
+			.mui-preview-loading {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			
+			.mui-preview-loading.mui-active {
+				display: block;
+			}
+			
+			.mui-preview-loading .mui-spinner-white {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -25px;
+				margin-top: -25px;
+				height: 50px;
+				width: 50px;
+			}
+			
+			.mui-preview-image img.mui-transitioning {
+				-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+				transition: transform 0.5s ease, opacity 0.5s ease;
+			}
+			
+			@-webkit-keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			
+			@keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			
+			@-webkit-keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			
+			@keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			
+			p img {
+				max-width: 100%;
+				height: auto;
+			}
+.Article { 
+	overflow: hidden;
+	/*margin:10px;*/
+	padding: 10px;
+	background: white !important;
+}
+ 
+.art_tit{
+	margin-bottom: 15px;
+}
+.art_tit h1{
+	font-size: 1.4rem;
+	color: #000000;
+	text-align: center;
+	line-height: 2.2rem;
+}
+.art_tit p{
+	text-align: center;
+}
+.art_tit p span{
+	font-size: 0.75rem;
+	color: #999999;
+}
+.art_nr{
+	overflow: hidden;
+}
+.art_nr p{
+	line-height: 1.5rem !important;
+	font-size: 0.875rem !important;
+	color: #333333 !important;
+	text-align: justify;
+	text-indent: 2rem;
+}
+.art_nr img{
+	margin: 10px auto;
+	width: 75%;
+}
+.Associated{
+	overflow: hidden;
+	margin: 0 10px;
+}
+.ass_tit{
+	text-align: center;
+	margin: 20px 0;
+}
+.ass_tit span{
+	display: block;
+	width: 228px;
+	height: 80px;
+	line-height: 80px;
+	font-size: 1.2rem;
+	color: #FFFFFF;
+	text-align: center;
+	background: url(../images/guanlian.png) center center no-repeat;
+	margin: auto;
+	margin-bottom: 10px;
+}
+.Associated ul{
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	padding-bottom: 60px;
+}
+.Associated ul li{
+	list-style: none;
+	padding-left: 10px;
+	border-left: 2px solid #555555;
+	margin-bottom: 20px;
+	overflow: hidden;
+	background: white;
+}
+.Associated ul li h3{
+	font-size: 1.2rem;
+	line-height: 2.2rem;
+	font-weight: normal;
+	color: #333333;
+	margin: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.Associated ul li p{
+	line-height: 1rem;margin-top: 0.5rem;
+}
+.operation{
+	position: fixed;
+	z-index: 999;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 60px;
+	background: #FFFFFF;
+}
+.oper_one{
+	margin: 0 10px;
+}
+.oper_xie{
+	float: left;
+	width: 50%;
+}
+.oper_xie span{
+	width: 100%;
+	display: block;
+	height: 40px;
+	border: 1px solid #DDDDDD;
+	border-radius: 3px;
+	color: #666666;
+	padding:0 10px;
+	margin: 4px auto;
+	line-height: 32px;
+	font-size: 0.75rem;
+}
+.oper_two{
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	padding: 10px;
+	width: 100%;
+	height: 100%;
+	z-index: 7777;
+}
+.shuru_bg{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #000000;
+	opacity: 0.5;
+	left: 0;
+	right: 0;
+	z-index: 8888;
+}
+.shuru_box{
+	padding: 10px;
+	position: fixed;
+	z-index: 9999;
+	height: 10rem;
+	background: #FFFFFF;
+	left: 0;
+	right: 0;
+	bottom: 0px;
+	opacity: 1;
+}
+.shuru_box textarea{
+	width: 100%;
+	margin: 10px;
+	margin: auto;
+	height: 5rem;
+	margin-bottom: 10px;
+	clear: both;
+}
+.shuru_box button{
+	width: 5rem;
+	height: 36px;
+	border: 1px solid #DDDDDD;
+	border-radius: 3px;
+	float: right;
+}
+.oper_du{
+	float: right;
+	margin-right: 20px;
+	overflow: hidden;
+}
+.oper_du em{
+	float: left;
+	width: 1rem;
+	height:1rem;
+	background: url(../images/xie_icon.png) center center no-repeat;
+	background-size: cover;
+	margin-top: 1.1rem;
+	
+}
+.oper_du span{
+	line-height: 54px;
+	font-size: 1rem;
+	float: left;
+	margin-left: 5px;
+}
+.oper_zan{
+	float: right;
+	margin-right: 10px;
+	overflow: hidden;
+}
+.oper_zan  em{
+	float: left;
+	width: 1rem;
+	height:1rem;
+	background: url(../images/zan_icon.png) center center no-repeat;
+	background-size: cover;
+	margin-top: 1.1rem;
+	color: #666666 ;
+}
+.oper_collection {
+	float: right;
+}
+.oper_collection img{
+	width: 1.5rem;
+	height:1.5rem;
+	margin-top: 0.9rem;
+	border: none;
+}
+
+.oper_zan span{
+	line-height: 54px;
+	font-size: 1rem;
+	float: left;
+	margin-left: 5px;
+	color: #666666;
+}
