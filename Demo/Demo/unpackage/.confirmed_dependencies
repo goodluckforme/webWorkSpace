@@ -7,7 +7,14 @@
 	"index.html": {
 		"refer": [
 			"examples/actionsheet-plus.html",
-			"examples/actionsheet.html"
+			"examples/actionsheet.html",
+			"home/home.html",
+			"home/project.html",
+			"home/knowledge_System.html",
+			"home/website _Navigation.html"
+		],
+		"resources": [
+			"home/home.html"
 		]
 	},
 	"examples/actionsheet.html": {

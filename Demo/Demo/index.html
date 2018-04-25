@@ -1,48 +1,155 @@
-<!DOCTYPE html>
+<!DOCTYPE >
 <html>
 
 	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>启动页</title>
-		<link rel="stylesheet" href="css/mui.min.css">
-		<script type="text/javascript">
-			document.addEventListener('plusready', function() {
-//				console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。")
-			});
-		</script>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+		<title>首页</title>
 		<style type="text/css">
-			#list {
-				/*避免导航边框和列表背景边框重叠，看起来像两条边框似得；*/
-				margin-top: -1px;
+			html,
+			body {
+				background-color: #EFEFF4;
+			}
+			
+			.mui-bar {
+				font-size: 17px;
+				font-weight: normal;
+			}
+			
+			.offCanvasSide {
+				background-color: #ffffff;
 			}
 		</style>
-		<script src="js/mui.min.js"></script>
 	</head>
 
-	<body>
-		<div class="mui-content">
-			<ul id="list" class="mui-table-view mui-table-view-chevron">
-				<li class="mui-table-view-cell mui-collapse">
-					<a class="mui-navigate-right" href="#">
-						actionsheet（操作表）
-					</a>
-					<ul class="mui-table-view mui-table-view-chevron">
+	<div id="mainContainer" class="mui-off-canvas-wrap mui-draggable">
+		<!--侧滑菜单部分-->
+		<aside id="offCanvasSide" class="offCanvasSide mui-off-canvas-left">
+			<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<div class="content">
+						<h1 align="center">马齐</h1>
+					</div>
+					<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
 						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right" href="examples/actionsheet.html">
-								H5模式
+							<a class="mui-navigate-right" href="">
+								我的收藏
 							</a>
 						</li>
-						<li class="mui-table-view-cell mui-plus-visible">
-							<a class="mui-navigate-right" href="examples/actionsheet-plus.html">
-								native模式
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right" href="https://blog.csdn.net/qq_20330595/article/list">
+								关于项目
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+								about Hbuilder
 							</a>
 						</li>
 					</ul>
-				</li>
-			</ul>
+				</div>
+			</div>
+		</aside>
+
+		<!--内容页部分-->
+		<div class="mui-inner-wrap">
+			<header class="mui-bar mui-bar-nav">
+				<a href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+				<h1 id="title" class="mui-title">玩安卓MUI版</h1>
+			</header>
+			<div id="drawerContainer" class="mui-content mui-scroll-wrapper">
+				<div class="mui-scroll">
+
+				</div>
+				<nav class="mui-bar mui-bar-tab">
+					<a class="mui-tab-item mui-active" href="home/home.html">
+						<span class="mui-icon mui-icon-home"></span>
+						<span class="mui-tab-label">首页</span>
+					</a>
+					<a class="mui-tab-item" href="home/knowledge_System.html">
+						<span class="mui-icon mui-icon-bars"><span class="mui-badge">9</span></span>
+						<span class="mui-tab-label">知识体系</span>
+					</a>
+					<a class="mui-tab-item" href="home/project.html">
+						<span class="mui-icon mui-icon-flag"></span>
+						<span class="mui-tab-label">网站导航</span>
+					</a>
+					<a class="mui-tab-item" href="home/website _Navigation.html">
+						<span class="mui-icon mui-icon-eye"></span>
+						<span class="mui-tab-label">项目</span>
+					</a>
+				</nav>
+			</div>
 		</div>
-		
-	</body>
+
+	</div>
+	<script src="js/mui.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		mui.init();
+		//主容器
+		var mainContainer = mui('#mainContainer');
+		//侧滑部分
+		var drawerContainer = document.getElementById("drawerContainer");
+		//主界面‘显示侧滑菜单’按钮的点击事件
+		//mainContainer.offCanvas('show');
+		//主界面和侧滑菜单界面均支持区域滚动；
+		mui('#mainContainer').scroll();
+		mui('#drawerContainer').scroll();
+
+		var subpages = ['home/home.html', 'home/knowledge_System.html',
+			'home/project.html', 'home/website _Navigation.html'
+		];
+		var subpage_style = {
+			top: '45px',
+			bottom: '51px'
+		};
+		//创建子页面，首个选项卡页面显示，其它均隐藏；
+		mui.plusReady(function() {
+			var self = plus.webview.currentWebview();
+			for(var i = 0; i < 4; i++) {
+				var temp = {};
+				var sub = plus.webview.create(subpages[i], subpages[i], subpage_style);
+				if(i > 0) {
+					sub.hide();
+				} else {
+					temp[subpages[i]] = "true";
+					mui.extend(aniShow, temp);
+				}
+				self.append(sub);
+			}
+		});
+		//当前激活选项
+		var activeTab = subpages[0];
+		var title = document.getElementById("title");
+		var aniShow = {};
+		console.log(title);
+		//设置点击导航栏点击事件
+		mui('.mui-bar-tab').on('tap', 'a', function(e) {
+			var targetTab = this.getAttribute('href');
+			if(targetTab == activeTab) {
+				return;
+			}
+			//更换标题 
+			title.innerHTML = this.querySelector('.mui-tab-label').innerHTML;
+			//显示目标选项卡
+			//若为iOS平台或非首次显示，则直接显示
+			if(mui.os.ios || aniShow[targetTab]) {
+				plus.webview.show(targetTab);
+			} else {
+				//否则，使用fade-in动画，且保存变量
+				var temp = {};
+				temp[targetTab] = "true";
+				mui.extend(aniShow, temp);
+				plus.webview.show(targetTab, "fade-in", 300);
+			}
+			//隐藏当前;
+			plus.webview.hide(activeTab);
+			//更改当前活跃的选项卡
+			activeTab = targetTab;
+		});
+	</script>
 
 </html>

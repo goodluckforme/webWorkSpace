@@ -146,10 +146,15 @@
 				"priority": 0
 			},
 			"index.html": {
-				"resources": [],
+				"resources": [
+					"home/home.html"
+				],
 				"refer": [
 					"examples/actionsheet-plus.html",
-					"examples/actionsheet.html"
+					"examples/actionsheet.html",
+					"home/project.html",
+					"home/knowledge_System.html",
+					"home/website _Navigation.html"
 				],
 				"priority": 0
 			},
