@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>详情页</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<header class="mui-bar mui-bar-nav">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<h1 id="title" class="mui-title">{{title}}</h1>
+			</header>
+		</div>
+	</body>
+	<script src="../../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/project/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		function getDefaultData() {
+			return {
+				guid: '',
+				title: '',
+				author: '',
+				time: '',
+			}
+		}
+		//重写返回逻辑
+		mui.back = function() {
+			plus.webview.currentWebview().hide("auto", 300);
+		}
+		var vm = new Vue({
+			el: '.mui-content',
+			data: getDefaultData(),
+			methods: {
+				resetData: function() { //重置数据
+					Object.assign(this.$data, getDefaultData());
+				}
+			}
+		});
+		//监听自定义事件，获取新闻详情
+		document.addEventListener('get_detail', function(event) {
+			vm.guid = event.detail.guid;
+			//前页传入的数据，直接渲染，无需等待ajax请求详情后
+			vm.title = event.detail.title;
+			vm.author = event.detail.author;
+			vm.time = event.detail.time;
+			//			document.getElementById("title").innerHTML = title;
+			console.log('guid=============' + vm.guid);
+			console.log('title=============' + vm.title);
+			console.log('author=============' + vm.author);
+			console.log('time=============' + vm.time);
+		});
+
+		//窗口隐藏时，重置页面数据
+		mui.plusReady(function() {
+			var self = plus.webview.currentWebview();
+			self.addEventListener("hide", function(e) {
+				window.scrollTo(0, 0);
+				vm.resetData();
+			}, false);
+		})
+	</script>
+
+</html>

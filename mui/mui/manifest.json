@@ -165,7 +165,8 @@
 					"examples/best-practices/list-to-detail/listview.html",
 					"examples/setting.html",
 					"examples/beecloud.html",
-					"examples/ajax.html"
+					"examples/ajax.html",
+					"examples/guide.html"
 				],
 				"priority": 0
 			},

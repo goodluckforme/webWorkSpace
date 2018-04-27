@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<!--三级城市列表-->
+		<link href="css/mui.picker.css" rel="stylesheet" />
+		<link href="css/mui.poppicker.css" rel="stylesheet" />
+		<style>
+		li{list-style-type: none;}
+		.zxtuku{width:100%;overflow: hidden;}
+		.zxtuku p{font-size: 0.5rem;}
+    	.zxtuku img{width:100%}
+      	.zxtuku ul{width:49%;float:left;padding: 0;}
+      	.zxtuku ul li{padding:5px;background: ##F3F3F3}
+    	.zxtuku ul li{padding:5px;list-style-type: none;}
+    	/*标题搜索部分*/
+    	.page1-form{padding:10px 0}
+    	input.page1-search-text1{margin-bottom:0}
+        div.page1-search{width:90%;margin:0 auto;position:relative;}
+        .page1-search .page1-search-text1{border:1px solid #2AC845}
+        .page1-search-mt{display:block;position: absolute;top:0;right:0px;background:#2AC845;color:#fff;padding:10px}
+        /*底部伸缩部分*/
+        .yyt-form-bottom{position: fixed;width:100%;bottom:0;z-index: 2;}
+        .yyu-form-h{background: rgba(0,0,0,0.5);position: relative;text-align: center;padding:5px 0}
+        .yyu-form-h p{color:#fff;margin:0}
+        .yyu-form-h h4{color:#EC971F}
+        .yyu-form-h strong{color:#CF2D28}
+       
+        .yyt-form-bottom{}
+        .yyt-page1-f{display: none;}
+        .imgDown{
+        	width:36px;
+        	height:40px;
+        	position:absolute;
+        	top:0;
+        	right:0;
+        	transform: rotate(180deg);
+        	animation:myfirst 1s infinite linear;
+        	}
+        	@keyframes myfirst
+			{
+			from {top:0px;}
+			to {top:10px;}
+			}
+        .imgUp{transform: rotate(0deg);}
+        .mui-btn-orange{width:95%;margin:0 auto;background: #EC971F;color: #FFFFFF;padding: 10px 0;border-radius: 5px;}
+		
+		
+		</style>
+		
+	</head>
+
+	<body>
+	  <!-- 主页面容器 -->
+	 <div class="mui-inner-wrap">
+	    <!-- 主页面标题 -->
+	   <header class="mui-bar mui-bar-nav page1-nav">
+	      <a class="mui-icon mui-icon-arrowleft" href="index.html"></a>
+	      <h1 class="mui-title">装修图库</h1>
+	     
+	   </header>
+	    <div class="mui-content mui-scroll-wrapper">
+	      <div class="mui-scroll">
+	        <!-- 主界面具体展示内容 -->
+	         <!-- 搜索部分 -->
+	        <form class="page1-form">
+	        	<div class="page1-search">	        		
+		        	<input type="text" name="page1-text1" id="page1-text1" class="page1-search-text1" value="" placeholder="输入您想看的装修美图">
+		        	<span  class="page1-search-mt">搜索美图</span>
+	            </div>
+	        </form>
+	        
+	         <!-- 轮播部分 -->
+	        <div id="slider" class="mui-slider" >
+	          <div class="mui-slider-group mui-slider-loop">
+	            <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+	            <div class="mui-slider-item mui-slider-item-duplicate">
+	              <a href="#">
+	                <img src="img/banner4.jpg" alt="banner4">
+	              </a>
+	            </div>
+	            <!-- 第一张 -->
+	            <div class="mui-slider-item">
+	              <a href="#">
+	                <img src="img/banner1.jpg" alt="banner1">
+	              </a>
+	            </div>
+	            <!-- 第二张 -->
+	            <div class="mui-slider-item">
+	              <a href="#">
+	                <img src="img/banner2.jpg" alt="banner2">
+	              </a>
+	            </div>
+	            <!-- 第三张 -->
+	            <div class="mui-slider-item">
+	              <a href="#">
+	                <img src="img/banner3.jpg" alt="banner3">
+	              </a>
+	            </div>
+	            <!-- 第四张 -->
+	            <div class="mui-slider-item">
+	              <a href="#">
+	                <img src="img/banner4.jpg" alt="banner4">
+	              </a>
+	            </div>
+	            <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+	            <div class="mui-slider-item mui-slider-item-duplicate">
+	              <a href="#">
+	                <img src="img/banner1.jpg" alt="banner1">
+	              </a>
+	            </div>
+	          </div>
+	          <div class="mui-slider-indicator">
+	            <div class="mui-indicator mui-active"></div>
+	            <div class="mui-indicator"></div>
+	            <div class="mui-indicator"></div>
+	            <div class="mui-indicator"></div>
+	          </div>
+	        </div>
+	      
+	       <ul class="mui-table-view">
+	            <li class="mui-table-view-cell mui-media">
+	                <a href="javascript:;">
+	                    <img class="mui-media-object mui-pull-left" src="img/pubu4.jpg">
+	                    <div class="mui-media-body">
+	                        幸福
+	                        <p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+	                    </div>
+	                </a>
+	            </li>
+	            <li class="mui-table-view-cell mui-media">
+	                <a href="javascript:;">
+	                    <img class="mui-media-object mui-pull-left" src="img/pubu3.jpg">
+	                    <div class="mui-media-body">
+	                        木屋
+	                        <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
+	                    </div>
+	                </a>
+	            </li>
+	            <li class="mui-table-view-cell mui-media">
+	                <a href="javascript:;">
+	                    <img class="mui-media-object mui-pull-left" src="img/pubu5.jpg">
+	                    <div class="mui-media-body">
+	                        CBD
+	                        <p class="mui-ellipsis">烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
+	                    </div>
+	                </a>
+	            </li>
+	        </ul>
+	        <div class="zxtuku">
+		        <ul class="zxtuku-L">
+		        	
+		        </ul>
+		        <ul class="zxtuku-R">
+		        	
+		        </ul>
+	        </div>	        
+	    </div>  
+	    <div class="mui-off-canvas-backdrop"></div>
+	</div>
+	
+	
+	 <div class="yyt-form-bottom">
+		        <div class="yyu-form-h">
+			         <h4>装修该花多少钱？</h4>
+			         <p><strong>10s</strong>获取免费报价</p>
+			         <img class="imgDown" src="img/down.png"/>
+		         </div>
+	         <form class="mui-input-group yyt-page1-f">
+	         	
+	         	  
+	         	<button id='showCityPicker3' class="mui-btn mui-btn-block" type='button'>
+	         		请选组您所在的城市
+	         		<span class="mui-icon mui-icon-arrowright"></span>
+	         	</button>	         	  
+	         	<input type="text" class="mui-input-clear" placeholder="请输入您的房屋面积">
+	         	<input type="tel" class="mui-input-clear" placeholder="请输入您的电话号码">
+	         	<button type="button" class="mui-btn mui-btn-orange mui-btn-block">按钮</button>
+	         	</div>
+	         </form>
+	        </div>
+	<script src="js/mui.min.js"></script>
+	<script src="js/jquery-3.1.0.js"></script>
+	<script src="js/json.js"></script>
+	<!--/三级城市列表-->
+    <script src="js/mui.picker.js"></script>
+	<script src="js/mui.poppicker.js"></script>
+	<script src="js/city.data.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+	<!--\三级城市列表-->
+	<script type="text/javascript">
+		//初始化 MUI
+		mui.init();
+		//初始化 类.mui-scroll-wrapper，使其包裹的区域溢出可以上下滚动
+		(function($){
+			$(".mui-scroll-wrapper").scroll();
+		})(mui);
+		//初始化a链接，使其具有链接功能
+		mui('body').on('tap','a',function(){document.location.href=this.href;});	
+			
+		//瀑布流加载
+    	for(var i=0;i<json.data.length;i++){
+		var chtml='<li><img src="img/'+json.data[i].src+'"><p>'+json.data[i].name+'</p><li>';
+		 if($('.zxtuku-L').height()< $('.zxtuku-R').height()){
+		  $('.zxtuku-L').append(chtml);
+		  }else{
+		  $('.zxtuku-R').append(chtml);
+		  }
+		}
+				
+	    //三级城市选择列表	
+        (function($, doc) {
+			$.init();
+			$.ready(function() {
+					
+			//级联示例
+			var cityPicker3 = new $.PopPicker({
+				layer: 3
+			});
+			cityPicker3.setData(cityData3);
+			var showCityPickerButton = doc.getElementById('showCityPicker3');
+			var cityResult3 = doc.getElementById('cityResult3');
+			showCityPickerButton.addEventListener('tap', function(event) {
+			    cityPicker3.show(function(items) {
+			         cityResult3.innerText = "你选择的城市是:" + (items[0] || {}).text + " " + (items[1] || {}).text + " " + (items[2] || {}).text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+				     });
+			},false);
+			});
+		})(mui, document);
+			
+		//page1底部伸缩菜单
+		mui('body').on('tap','.imgDown',function(){
+			$(".yyt-page1-f").slideDown(500);
+			$(this).removeClass("imgUp")
+			$(this).addClass("imgUp")
+		});
+		mui('body').on('tap','.imgUp',function(){
+			$(".yyt-page1-f").slideUp(500);
+			$(this).removeClass("imgUp")			
+		});
+		
+		</script>
+	
+	</body>
+</html>
+
+
+
+

@@ -10,20 +10,310 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
 		<style type="text/css">
-		
+			.banner {
+				height: 180px;
+				overflow: hidden;
+				position: relative;
+				background-position: center;
+				background-color: #ccc;
+			}
+			
+			.banner img {
+				width: 100%;
+				height: auto;
+			}
+			
+			.banner .title {
+				position: absolute;
+				left: 15px;
+				bottom: 15px;
+				width: 90%;
+				font-size: 16px;
+				font-weight: 400;
+				line-height: 21px;
+				color: white;
+				z-index: 11;
+			}
+			
+			.type {
+				color: blue;
+				font-style: inherit;
+				font-size: 16px;
+			}
+			
+			.author,
+			.createtime {
+				font-size: 13px;
+			}
 		</style>
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav">
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 id="title" class="mui-title">首页</h1>
-		</header>
-		<div class="mui-content content">
-			<p>这是可拖动式右滑导航示例，主页面和菜单在一个HTML文件中， 优点是支持拖动手势（跟手），缺点是不支持菜单内容在多页面的复用； 当前页面为主界面，你可以在主界面放置任何内容； 打开侧滑菜单有多种方式： 1、在当前页面向右拖动； 2、点击页面左上角的
-				<span class="mui-icon mui-icon-bars"></span> 图标； 3、通过JS API触发（例如点击如下蓝色按钮体验）；
-				<span class="android-only">4、Android手机按menu键；</span>
-			</p>
+		<div class="mui-content" id="home_banner">
+			<!--顶部banner图 开始-->
+			<div class="banner">
+				<a href="javascript:;" :data-guid="banner.guid" @tap="open_detail(banner)">
+					<img :src="banner.cover" />
+					<h2 class="title mui-ellipsis-2">{{banner.title}}</h2>
+					<div style="display: none;">
+						<div class="author">{{banner.desc}}</div>
+					</div>
+				</a>
+			</div>
+
+			<!--列表信息流 开始-->
+			<div id="list" class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell mui-media" v-for="item in items">
+							<a href="javascript:;" :data-guid="item.guid" @tap="open_detail(item)">
+								<p class="createtime mui-pull-right">{{item.niceDate}}</p>
+								<div class="mui-media-body">
+									<div class="mui-ellipsis-2">{{item.title}}</div>
+								</div>
+								<div class="meta-info">
+									<div class="author">作者 : {{item.author}}</div>
+									<div class="type" onclick="clickType()">{{item.chapterName}}</div>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--列表信息流 结束-->
+			<script src="../js/project/vue.min.js" type="text/javascript" charset="utf-8"></script>
+			<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+			<script type="text/javascript">
+				//加载页码
+				var index = 0;
+
+				var webview_detail = null; //详情页webview
+
+				//mui初始化，配置下拉刷新
+				mui.init({
+					swipeBack: true, //启用右滑关闭功能,
+					//屏蔽返回键
+					keyEventBind: {
+						backbutton: true //关闭back按键监听
+					},
+					pullRefresh: {
+						container: '#list',
+						down: {
+							style: 'circle',
+							offset: '0px',
+							auto: true,
+							callback: pulldownRefresh
+						},
+						up: {
+							contentrefresh: '正在加载...',
+							callback: pullupRefresh
+						}
+					}
+				});
+
+				/**
+				 *  下拉刷新获取最新列表 
+				 */
+				function pulldownRefresh() {
+					if(window.plus && plus.networkinfo.getCurrentType() === plus.networkinfo.CONNECTION_NONE) {
+						plus.nativeUI.toast('似乎已断开与互联网的连接', {
+							verticalAlign: 'top'
+						});
+						mui('#list').pullRefresh().endPulldownToRefresh();
+						return;
+					}
+
+					mui.ajax({
+						type: "get",
+						url: "http://www.wanandroid.com/banner/json",
+						async: false,
+						dataType: "json",
+						timeout: 1000,
+						success: function(data) {
+							mui('#list').pullRefresh().endPulldownToRefresh();
+							news.banner = {
+								guid: data.data[0].desc,
+								title: data.data[0].title,
+								cover: data.data[0].imagePath,
+							};
+							console.log(news.banner.cover);
+						},
+						error: function(xhr, type, errorThrown) {
+							plus.nativeUI.toast(errorThrown);
+							mui('#list').pullRefresh().endPulldownToRefresh();
+						}
+					});
+					index = 1;
+					news.items = [];
+					pullupRefresh();
+				}
+
+				/**
+				 * 上拉加载拉取历史列表 
+				 */
+				function pullupRefresh() {
+					if(window.plus && plus.networkinfo.getCurrentType() === plus.networkinfo.CONNECTION_NONE) {
+						plus.nativeUI.toast('似乎已断开与互联网的连接', {
+							verticalAlign: 'top'
+						});
+						return;
+					}
+					//请求历史列表信息流
+					var pullupToRefreshUrl = "http://www.wanandroid.com/article/list/" + index + "/json";
+					mui.ajax({
+						type: "get",
+						url: pullupToRefreshUrl,
+						async: false,
+						dataType: "json",
+						timeout: 1000,
+						success: function(data) {
+							mui('#list').pullRefresh().endPullupToRefresh();
+							console.log(pullupToRefreshUrl);
+							if(data.over) {
+								mui('#list').pullRefresh().disablePullupToRefresh();
+							} else {
+								index++;
+								mui('#list').pullRefresh().enablePullupToRefresh();
+							}
+							news.items = news.items.concat(data.data.datas);
+							//							console.log(news.items);
+						},
+						error: function(xhr, type, errorThrown) {
+							mui('#list').pullRefresh().endPullupToRefresh();
+							plus.nativeUI.toast(xhr + type + errorThrown);
+						}
+					});
+				}
+				//
+				//				mui.plusReady(function() {
+				//					//预加载详情页
+				//					webview_detail = mui.preload({
+				//						url: 'widget/detail.html',
+				//						id: 'news_detail',
+				//					});
+				//				});
+
+				var news = new Vue({
+					el: '#home_banner',
+					data: {
+						banner: {}, //顶部banner数据
+						items: [] //列表信息流数据
+					}
+				});
+
+				/**
+				 * 
+				 */
+				function clickType() {
+					alert('跳转到类型页面');
+				}
+
+				/**
+				 * 打开新闻详情
+				 * 
+				 * @param {Object} item 当前点击的新闻对象
+				 */
+				function open_detail(item) {
+					//非plus环境，直接走href跳转
+					if(!mui.os.plus) {
+						location.href = href;
+						return;
+					}
+					//方法一
+					_openw = mui.openWindow({
+						url: item.link,
+						id: item.link,
+						styles: { // 窗口参数 参考5+规范中的WebviewStyle,也就是说WebviewStyle下的参数都可以在此设置
+							titleNView: { // 窗口的标题栏控件
+								autoBackButton: true,
+								titleText: item.title, // 标题栏文字,当不设置此属性时，默认加载当前页面的标题，并自动更新页面的标题
+								titleColor: "#000000", // 字体颜色,颜色值格式为"#RRGGBB",默认值为"#000000"
+								titleSize: "17px", // 字体大小,默认17px
+								backgroundColor: "#F7F7F7", // 控件背景颜色,颜色值格式为"#RRGGBB",默认值为"#F7F7F7"
+								progress: { // 标题栏控件的进度条样式
+									color: "#00FF00", // 进度条颜色,默认值为"#00FF00"  
+									height: "2px" // 进度条高度,默认值为"2px"         
+								},
+								splitLine: { // 标题栏控件的底部分割线，类似borderBottom
+									color: "#CCCCCC", // 分割线颜色,默认值为"#CCCCCC"  
+									height: "1px" // 分割线高度,默认值为"2px"
+								}
+
+							}
+						},
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+							title: '正在加载...', //等待对话框上显示的提示内容
+						}
+					});
+					//方法二
+					//					_openw = plus.webview.create(item.link, item.link, {
+					//						scrollIndicator: 'none',
+					//						scalable: false,
+					//						popGesture: 'close',
+					//						styles: { // 窗口参数 参考5+规范中的WebviewStyle,也就是说WebviewStyle下的参数都可以在此设置
+					//							titleNView: { // 窗口的标题栏控件
+					//								autoBackButton: true,
+					//								titleText: item.title, // 标题栏文字,当不设置此属性时，默认加载当前页面的标题，并自动更新页面的标题
+					//								titleColor: "#000000", // 字体颜色,颜色值格式为"#RRGGBB",默认值为"#000000"
+					//								titleSize: "17px", // 字体大小,默认17px
+					//								backgroundColor: "#F7F7F7", // 控件背景颜色,颜色值格式为"#RRGGBB",默认值为"#F7F7F7"
+					//								progress: { // 标题栏控件的进度条样式
+					//									color: "#00FF00", // 进度条颜色,默认值为"#00FF00"  
+					//									height: "2px" // 进度条高度,默认值为"2px"         
+					//								},
+					//								splitLine: { // 标题栏控件的底部分割线，类似borderBottom
+					//									color: "#CCCCCC", // 分割线颜色,默认值为"#CCCCCC"  
+					//									height: "1px" // 分割线高度,默认值为"2px"
+					//								}
+					//
+					//							}
+					//						},
+					//						waiting: {
+					//							autoShow: true, //自动显示等待框，默认为true
+					//							title: '正在加载...', //等待对话框上显示的提示内容
+					//						}
+					//					});
+					_openw.addEventListener('hide', function() {
+						_openw && (_openw.showded = true);
+						_openw = null;
+					}, false);
+					_openw.addEventListener('close', function() { //页面关闭后可再次打开
+						_openw = null;
+						preate[id] && (preate[id] = null); //兼容窗口的关闭
+					}, false);
+					_openw.show("slide-in-right", 300);
+					//方法三
+					//					//触发子窗口变更新闻详情
+					//					mui.fire(webview_detail, 'get_detail', {
+					//						guid: item.link,
+					//						title: item.title,
+					//						author: item.author,
+					//						time: item.niceDate,
+					//					});
+					//
+					//					//var nwaiting = plus.nativeUI.showWaiting(); //打开原生加载等待框 
+					//					setTimeout(function() {
+					//						webview_detail.show("slide-in-right", 300);
+					//					}, 150);
+				}
+				var _openw;
+				var _toast;
+				mui.back = function() {
+					if(_openw) {
+						_openw.close();
+						return;
+					}
+					if(!_toast || !_toast.isVisible()) {
+						_toast = mui.toast('再按一次返回键退出<br>点此可&nbsp;<span style="border-bottom:1px solid #fff" onclick="openFeedback();">反馈意见</span>', {
+							duration: 'short',
+							type: 'div'
+						});
+					} else {
+						plus.runtime.quit();
+					}
+				}
+			</script>
 		</div>
 	</body>
 

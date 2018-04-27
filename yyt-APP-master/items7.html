@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<!--App自定义的css-->
+		<!--三级城市列表-->
+		<link href="css/mui.picker.css" rel="stylesheet" />
+		<link href="css/mui.poppicker.css" rel="stylesheet" />
+		<link href="css/items7.css" rel="stylesheet" />		
+	</head>
+	<body>
+	<!-- 主页面容器 -->
+	<div class="mui-inner-wrap">
+	<!-- 主页面标题 -->
+	    <header class="mui-bar mui-bar-nav page1-nav">
+	       <a class="mui-icon mui-icon-arrowleft" href="index.html"></a>
+	       <h1 class="mui-title">装修报价1</h1>
+	     
+	   </header>
+	    <div class="mui-content mui-scroll-wrapper">
+	        <div class="mui-scroll">
+	        <!-- 主界面具体展示内容 -->
+	        <div class="items6-body">
+	           <img src="img/items7-banner1.jpg"/>
+	          <!--表单部分-->
+	         <div class="items6-f">
+	            <form class="mui-input-group items6-form items7-form">
+				    <button id='showCityPicker3' class="mui-btn mui-btn-block" type='button'>
+				    	请选组您所在的城市
+				    	<span class="mui-icon mui-icon-arrowright"></span>
+				    	<div id='cityResult3' class="ui-alert"></div>				  
+				    </button>
+				    <input type="text" class="" placeholder="请输入您的房屋面积">
+	
+				    <input type="tel" class="" placeholder="输入电话号码,报价结果将发到您手机">
+				    
+					
+				    <div class="items7-select1">
+					    <label>
+							<select id="select1-a" class="needsclick">
+									  <option value="1">1室</option>
+									  <option value="2">2室</option>
+									  <option value="3">3室</option>
+									  <option value="4">4室</option>
+									  <option value="5">5室</option>
+									  <option value="6">6室</option>
+							</select>
+					    </label>
+					    <label>
+							<select id="select1-b" class="needsclick">
+									  <option value="1">1厅</option>
+									  <option value="2">2厅</option>
+									  <option value="3">3厅</option>
+									  <option value="4">4厅</option>
+									  <option value="5">5厅</option>
+									  <option value="6">6厅</option>
+							</select>
+					    </label>
+			        </div>
+			        <div class="items7-select2">
+						<label>
+							<select id="select2-a" class="needsclick">
+									  <option value="1">1厨</option>
+									  <option value="2">2厨</option>
+									  <option value="3">3厨</option>
+									  <option value="4">4厨</option>
+									  <option value="5">5厨</option>
+									  <option value="6">6厨</option>
+							</select>
+						</label>
+						<label>
+							<select id="select2-b" class="needsclick">
+									  <option value="1">1卫</option>
+									  <option value="2">2卫</option>
+									  <option value="3">3卫</option>
+									  <option value="4">4卫</option>
+									  <option value="5">5卫</option>
+									  <option value="6">6卫</option>
+							</select>
+						</label>
+						<label>
+							<select id="select2-c" class="needsclick">
+									  <option value="1">1阳台</option>
+									  <option value="2">2阳台</option>
+									  <option value="3">3阳台</option>
+									  <option value="4">4阳台</option>
+									  <option value="5">5阳台</option>
+									  <option value="6">6阳台</option>
+							</select>
+						</label>
+			        </div>
+			        <button type="button" class="mui-btn mui-btn-warning mui-btn-block items7-btn">立即申请</button>
+	            </form> 
+			</div>
+			<div class="items7-footer">
+				<h2>装修报价</h2>
+				<h3>0<span>元</span></h3>
+				<p><b>人工费：</b><strong>0<em>元</em></strong></p>
+				<p><b>材料费：</b><strong>0<em>元</em></strong></p>
+				<p><b>设计费：</b><strong>0<em>元</em></strong></p>
+				<p><b>质检费：</b><strong>0<em>元</em></strong></p>
+			
+		  </div>
+	    </div>  
+	    <div class="mui-off-canvas-backdrop"></div>
+	</div>
+	
+	<script src="js/mui.min.js"></script>
+	<!--App自定义的js-->
+	
+	<!--/三级城市列表-->
+    <script src="js/mui.picker.js"></script>
+	<script src="js/mui.poppicker.js"></script>
+	<script src="js/city.data.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+	<!--\三级城市列表-->
+	<script src="js/jquery-3.1.0.js"></script>
+	<script type="text/javascript">
+		//初始化 MUI
+		mui.init();
+		//初始化 类.mui-scroll-wrapper，使其包裹的区域溢出可以上下滚动
+		(function($){
+			$(".mui-scroll-wrapper").scroll();
+		})(mui);
+		//初始化a链接，使其具有链接功能
+		mui('body').on('tap','a',function(){document.location.href=this.href;});							
+		//三级城市列表
+    (function($, doc) {
+				$.init();
+				$.ready(function() {
+					
+					//级联示例
+					var cityPicker3 = new $.PopPicker({
+						layer: 3
+					});
+					cityPicker3.setData(cityData3);
+					var showCityPickerButton = doc.getElementById('showCityPicker3');
+					var cityResult3 = doc.getElementById('cityResult3');
+					showCityPickerButton.addEventListener('tap', function(event) {
+						cityPicker3.show(function(items) {
+							cityResult3.innerText = "你选择的城市是:" + (items[0] || {}).text + " " + (items[1] || {}).text + " " + (items[2] || {}).text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+				});
+			})(mui, document);
+		//底部装修报价
+		
+		</script>
+	</body>
+</html>
+
+
+
+

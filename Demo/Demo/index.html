@@ -19,8 +19,8 @@
 				font-weight: normal;
 			}
 			
-			.offCanvasSide {
-				background-color: #ffffff;
+			.mainContainer {
+				z-index: 9999;
 			}
 		</style>
 	</head>
@@ -30,9 +30,6 @@
 		<aside id="offCanvasSide" class="offCanvasSide mui-off-canvas-left">
 			<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
 				<div class="mui-scroll">
-					<div class="content">
-						<h1 align="center">马齐</h1>
-					</div>
 					<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
 						<li class="mui-table-view-cell">
 							<a class="mui-navigate-right" href="">
@@ -61,30 +58,31 @@
 				<h1 id="title" class="mui-title">玩安卓MUI版</h1>
 			</header>
 			<div id="drawerContainer" class="mui-content mui-scroll-wrapper">
-				<div class="mui-scroll">
-
+				<div id="changeContainer" class="mui-content">
+					<p style="margin: 10px;">侧滑目前和底部导航栏不兼容</p>
 				</div>
+				
 				<nav class="mui-bar mui-bar-tab">
-					<a class="mui-tab-item mui-active" href="home/home.html">
-						<span class="mui-icon mui-icon-home"></span>
-						<span class="mui-tab-label">首页</span>
-					</a>
-					<a class="mui-tab-item" href="home/knowledge_System.html">
-						<span class="mui-icon mui-icon-bars"><span class="mui-badge">9</span></span>
-						<span class="mui-tab-label">知识体系</span>
-					</a>
-					<a class="mui-tab-item" href="home/project.html">
-						<span class="mui-icon mui-icon-flag"></span>
-						<span class="mui-tab-label">网站导航</span>
-					</a>
-					<a class="mui-tab-item" href="home/website _Navigation.html">
-						<span class="mui-icon mui-icon-eye"></span>
-						<span class="mui-tab-label">项目</span>
-					</a>
-				</nav>
+				<a class="mui-tab-item mui-active" href="home/home.html">
+					<span class="mui-icon mui-icon-home"></span>
+					<span class="mui-tab-label">首页</span>
+				</a>
+				<a class="mui-tab-item" href="home/knowledge_System.html">
+					<span class="mui-icon mui-icon-bars"><span class="mui-badge">9</span></span>
+					<span class="mui-tab-label">知识体系</span>
+				</a>
+				<a class="mui-tab-item" href="home/project.html">
+					<span class="mui-icon mui-icon-flag"></span>
+					<span class="mui-tab-label">网站导航</span>
+				</a>
+				<a class="mui-tab-item" href="home/website _Navigation.html">
+					<span class="mui-icon mui-icon-eye"></span>
+					<span class="mui-tab-label">项目</span>
+				</a>
+			</nav>
 			</div>
+			<div class="mui-off-canvas-backdrop"></div>
 		</div>
-
 	</div>
 	<script src="js/mui.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
@@ -93,6 +91,17 @@
 		var mainContainer = mui('#mainContainer');
 		//侧滑部分
 		var drawerContainer = document.getElementById("drawerContainer");
+
+		//设置侧滑
+		var offCanvasSide = document.getElementById("offCanvasSide");
+		offCanvasSide.classList.remove('mui-transitioning');
+		var classList = mainContainer[0].classList;
+		offCanvasSide.setAttribute('style', '');
+		classList.remove('mui-slide-in');
+		classList.remove('mui-scalable');
+		classList.add('mui-slide-in');
+		mainContainer.offCanvas().refresh();
+
 		//主界面‘显示侧滑菜单’按钮的点击事件
 		//mainContainer.offCanvas('show');
 		//主界面和侧滑菜单界面均支持区域滚动；
@@ -104,7 +113,7 @@
 		];
 		var subpage_style = {
 			top: '45px',
-			bottom: '51px'
+			bottom: '51px',
 		};
 		//创建子页面，首个选项卡页面显示，其它均隐藏；
 		mui.plusReady(function() {
@@ -125,7 +134,7 @@
 		var activeTab = subpages[0];
 		var title = document.getElementById("title");
 		var aniShow = {};
-		console.log(title);
+
 		//设置点击导航栏点击事件
 		mui('.mui-bar-tab').on('tap', 'a', function(e) {
 			var targetTab = this.getAttribute('href');

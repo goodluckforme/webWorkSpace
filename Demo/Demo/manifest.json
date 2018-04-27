@@ -164,6 +164,20 @@
 					"index.html"
 				],
 				"priority": 0
+			},
+			"home/home.html": {
+				"resources": [],
+				"refer": [
+					"home/widget/detail.html"
+				],
+				"priority": 0
+			},
+			"home/knowledge_System.html": {
+				"resources": [
+					"home/widget/pullrefresh_sub.html"
+				],
+				"refer": [],
+				"priority": 0
 			}
 		},
 		"idle": {
