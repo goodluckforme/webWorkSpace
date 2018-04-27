@@ -4,14 +4,29 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>知识体系</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
 	</head>
-		
+
 	<body>
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		    <h1 class="mui-title">知识体系</h1>
-		</header>
+		<div class="mui-content"></div>
 	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript">
+		//启用双击监听
+		mui.init({
+			gestureConfig: {
+				doubletap: true
+			},
+			subpages: [{
+				url: 'widget/pullrefresh_sub.html',
+				id: 'pullrefresh_sub.html',
+//				styles: {
+//					top: '45px',
+//					bottom: '0px',
+//				}
+			}]
+		});
+	</script>
 
 </html>

@@ -1,0 +1,15 @@
+{
+	"index.html": {
+		"resources": [
+			"list.html"
+		],
+		"refer": [
+			"app/rank.html",
+			"app/my.html",
+			"list.html",
+			"app/discover.html",
+			"app/notes.html",
+			"app/login.html"
+		]
+	}
+}

@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <!--<title>webApp</title> -->
+   <!-- uc强制竖屏 -->
+	<meta name="screen-orientation" content="portrait">
+
+	<!-- UC强制全屏 --> 
+	<meta name="full-screen" content="yes">
+
+	<!-- UC应用模式 --> 
+	<meta name="browsermode" content="application">
+
+	<!-- QQ强制竖屏 -->
+	<meta name="x5-orientation" content="portrait">
+
+	<!-- QQ强制全屏 -->
+	<meta name="x5-fullscreen" content="true">
+
+    <link rel="stylesheet" type="text/css" href="css/mui.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <!--App自定义的css-->
+		<!--<link rel="stylesheet" type="text/css" href="css/app.css" />-->
+		<!--三级城市列表-->
+		<link href="css/mui.picker.css" rel="stylesheet" />
+		<link href="css/mui.poppicker.css" rel="stylesheet" />
+		<!--<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />-->
+    <script src="js/view.js"></script>
+	
+</head>
+<body>
+    <!-- 主界面不动、菜单移动 -->
+    <!-- 侧滑导航根容器 -->
+    <div class="mui-off-canvas-wrap mui-draggable ">
+      <!-- 菜单容器 -->
+      <aside class="mui-off-canvas-left" id="offCanvasSide">
+        <div class="mui-scroll-wrapper panel">
+          <div class="mui-scroll">
+            <!-- 菜单具体展示内容 -->
+            <!--<div><lable>主题色</lable><input type="color" style="width:10%;height:10px"></div>-->
+            <div class="mui-scroll-title">
+            	<a href="#"></a><span><strong style="color:#EC971F">VIP</strong>黎明之光</span>
+            	
+            </div>
+           
+            <div class="mui-scroll-b">
+            	<p>为了生活美好而战</p>
+            	
+            </div>
+            <ul class="mui-table-view jifen">
+                    <li >
+                        <a >
+                            积分<p>200</p>
+                        </a>
+                    </li>
+                    <li >
+                        <a>
+                            鱼豆<p>100</p>
+                        </a>
+                    </li>
+                    <li >
+                        <a >
+                            粉丝<p>2000</p>
+                        </a>
+                    </li>
+                    <li >
+                        <a >
+                           关注<p>2008</p>
+                        </a>
+                    </li>
+                </ul>
+           <ul class="mui-table-view">
+               <li class="mui-table-view-cell mui-media">
+                   <a href="javascript:;">
+                       <img class="mui-media-object mui-pull-left" src="img/tuwen1.jpg">
+                       <div class="mui-media-body">
+                           幸福
+                           <p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+                       </div>
+                   </a>
+               </li>
+               <li class="mui-table-view-cell mui-media">
+                   <a href="javascript:;">
+                       <img class="mui-media-object mui-pull-left" src="img/tuwen2.jpg">
+                       <div class="mui-media-body">
+                           木屋
+                           <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
+                       </div>
+                   </a>
+               </li>
+               <li class="mui-table-view-cell mui-media">
+                   <a href="javascript:;">
+                       <img class="mui-media-object mui-pull-left" src="img/tuwen3.jpg">
+                       <div class="mui-media-body">
+                           幸福
+                           <p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+                       </div>
+                   </a>
+               </li>
+               <li class="mui-table-view-cell mui-media">
+                   <a href="javascript:;">
+                       <img class="mui-media-object mui-pull-left" src="img/tuwen1.jpg">
+                       <div class="mui-media-body">
+                           木屋
+                           <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
+                       </div>
+                   </a>
+               </li>
+               <li class="mui-table-view-cell mui-media">
+                   <a href="javascript:;">
+                       <img class="mui-media-object mui-pull-left" src="img/tuwen1.jpg">
+                       <div class="mui-media-body">
+                           幸福
+                           <p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+                       </div>
+                   </a>
+               </li>
+               <li class="mui-table-view-cell mui-media">
+                   <a href="javascript:;">
+                       <img class="mui-media-object mui-pull-left" src="img/tuwen2.jpg">
+                       <div class="mui-media-body">
+                           木屋
+                           <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
+                       </div>
+                   </a>
+               </li>
+                    <li class="mui-table-view-cell mui-media">
+                   <a href="javascript:;">
+                       <img class="mui-media-object mui-pull-left" src="img/tuwen3.jpg">
+                       <div class="mui-media-body">
+                           幸福
+                           <p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+                       </div>
+                   </a>
+               </li>
+               <li class="mui-table-view-cell mui-media">
+                   <a href="javascript:;">
+                       <img class="mui-media-object mui-pull-left" src="img/tuwen1.jpg">
+                       <div class="mui-media-body">
+                           CBD
+                           <p class="mui-ellipsis">烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
+                       </div>
+                   </a>
+               </li>
+                    <li class="mui-table-view-cell mui-media">
+                   <a href="javascript:;">
+                       <img class="mui-media-object mui-pull-left" src="img/tuwen1.jpg">
+                       <div class="mui-media-body">
+                           幸福
+                           <p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+                       </div>
+                   </a>
+               </li>
+           </ul>
+          </div>
+        </div>
+      </aside>
+      <!-- 主页面容器 -->
+      <div class="mui-inner-wrap">
+        <!-- 主页面标题 -->
+    
+        <header class="mui-bar mui-bar-nav">
+          <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left" href="#offCanvasSide"></a>
+           <span class="mui-icon mui-icon mui-icon mui-icon-search icon-s"></span>
+           <h1 class="mui-title yyt-title">域雅兔</h1>
+        </header>
+        <nav class="mui-bar mui-bar-tab">
+    	    <a class="mui-tab-item mui-active">
+    	        <span class="mui-icon mui-icon-home"></span>
+    	        <span class="mui-tab-label">首页</span>
+    	       
+    	    </a>
+    	    <a class="mui-tab-item" href="page2.html">
+    	        <span class="mui-icon mui-icon-chatboxes"></span>
+    	        <span class="mui-tab-label">新闻</span>
+    	    </a>
+    	    <a class="mui-tab-item" href="page1.html">
+    	        <span class="mui-icon mui-icon-paperplane"></span>
+    	        <span class="mui-tab-label">中心</span>
+    	    </a>
+    	    <a class="mui-tab-item" href="page4.html">
+    	        <span class="mui-icon mui-icon-gear"></span>
+    	        <span class="mui-tab-label">设置</span>
+    	    </a>
+    	</nav>
+        <div class="mui-content mui-scroll-wrapper">
+          <div class="mui-scroll">
+            <!-- 主界面具体展示内容 -->
+            <div id="slider" class="mui-slider" >
+              <div class="mui-slider-group mui-slider-loop">
+                <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+                <div class="mui-slider-item mui-slider-item-duplicate">
+                  <a href="#">
+                    <img src="img/banner4.jpg">
+                  </a>
+                </div>
+                <!-- 第一张 -->
+                <div class="mui-slider-item">
+                  <a href="#">
+                    <img src="img/banner1.jpg">
+                  </a>
+                </div>
+                <!-- 第二张 -->
+                <div class="mui-slider-item">
+                  <a href="#">
+                    <img src="img/banner2.jpg">
+                  </a>
+                </div>
+                <!-- 第三张 -->
+                <div class="mui-slider-item">
+                  <a href="#">
+                    <img src="img/banner3.jpg">
+                  </a>
+                </div>
+                <!-- 第四张 -->
+                <div class="mui-slider-item">
+                  <a href="#">
+                    <img src="img/banner4.jpg">
+                  </a>
+                </div>
+                <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+                <div class="mui-slider-item mui-slider-item-duplicate">
+                  <a href="#">
+                    <img src="img/banner1.jpg">
+                  </a>
+                </div>
+              </div>
+              <div class="mui-slider-indicator yyt-turnpage">
+                <div class="mui-indicator mui-active"></div>
+                <div class="mui-indicator"></div>
+                <div class="mui-indicator"></div>
+                <div class="mui-indicator"></div>
+              </div>
+            </div>
+           
+            <ul class=" mui-table-view mui-grid-view header-items mui-grid-12 ">
+	            <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+	                <a id="nn" href="page1.html">
+	                    <span class="mui-icon mui-icon mui-icon-image" ></span>
+	                    <div class="mui-media-body">装修图库</div>
+	                </a>
+	            </li>
+	            <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+	                <a href="items2.html">
+	                    <span class="mui-icon mui-icon-home"></span>
+	                    <div class="mui-media-body">装修攻略</div>
+	                </a>
+	            </li>
+	            
+	            <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+	                <a href="items3.html">
+	                    <span class="mui-icon mui-icon-chatbubble"></span>
+	                    <div class="mui-media-body">装修公司</div>
+	                </a>
+	            </li>
+	            <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+	                <a href="items4.html">
+	                    <span class="mui-icon mui-icon-location"></span>
+	                    <div class="mui-media-body">家居商城</div>
+	                </a>
+	            </li>
+	             <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+	                <a href="items5.html">
+	                    <span class="mui-icon mui-icon-paperplane"></span>
+	                    <div class="mui-media-body">工艺检房</div>
+	                </a>
+	            </li>
+	             <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+	                <a href="items6.html">
+	                    <span class="mui-icon mui-icon-chatboxes"></span>
+	                    <div class="mui-media-body">户型设计</div>
+	                </a>
+	            </li>
+	            
+	            <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+	                <a href="items7.html">
+	                    <span class="mui-icon mui-icon-search"></span>
+	                    <div class="mui-media-body">装修报价</div>
+	                </a>
+	            </li>
+	            <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+	                <a href="items8.html">
+	                    <span class="mui-icon mui-icon-phone"></span>
+	                    <div class="mui-media-body">装修宝</div>
+	                </a>
+	            </li>            
+            </ul>
+                <ul class="mui-table-view mui-grid-view mui-grid-9">
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                    <a href="#">
+                        <!--<span class="mui-icon mui-icon-home">123</span>-->
+                        <div class="mui-media-body">装修日记</div>
+                    </a>
+                </li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                    <a href="#">
+                        <!--<span class="mui-icon mui-icon-email"></span>-->
+                        <div class="mui-media-body">装修风水</div>
+                    </a>
+                </li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                    <a href="#">
+                        <!--<span class="mui-icon mui-icon-chatbubble"></span>-->
+                        <div class="mui-media-body">学装修</div>
+                    </a>
+                </li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                    <a href="#">
+                       <!-- <span class="mui-icon mui-icon-location"></span>-->
+                        <div class="mui-media-body">新闻资讯</div>
+                    </a>
+                </li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                    <a href="#">
+                        <!--<span class="mui-icon mui-icon-search"></span>-->
+                        <div class="mui-media-body">装修贷款</div>
+                    </a>
+                </li>
+                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                    <a href="#">
+                       <!-- <span class="mui-icon mui-icon-phone"></span>-->
+                        <div class="mui-media-body">客户端</div>
+                    </a>
+                </li>
+                    </ul>
+                <form class="mui-input-group">
+                	<h4 style="border-bottom:1px solid #AAAAAA;padding:1rem 0">抢免费设计名额</h4>
+                	<p style="padding:2rem 0;text-align: center;">今日还剩<strong style="color:#EC971F">048</strong>名额</p>
+				    <div class="mui-input-row">
+				       <!-- <label>用户名</label>-->
+				    <input type="text" class="mui-input-clear" placeholder="您的称呼">
+				    </div>
+				    <div class="mui-input-row">
+				       <!-- <label>密码</label>-->
+				        <input type="tel" class="" placeholder="手机号">
+				    </div>
+				    <button id='showCityPicker3' class="mui-btn mui-btn-block" type='button'>
+				    	请选组您所在的城市
+				    	<span class="mui-icon mui-icon-arrowright"></span>
+				    	<div id='cityResult3' class="ui-alert"></div>				  
+				    </button>
+				<!--<div id='cityResult3' class="ui-alert"></div>-->
+				<p style="text-align: center;"><input type="checkbox">我已阅读并接受<a href="tiaokuan.html">《装修常见问题条款》</a></p>
+				<button type="button" class="mui-btn mui-btn-warning mui-btn-block">立即申请</button>
+				</form>
+				<ul class="box">
+				   <li style="margin-right:2px;"> 0元即可享受市场价12000元设计服务</li>	
+				   <li>专业设计师免费帮您设计3D全景图</li>
+				   <div class="box-haoli">壕礼</div>
+				</ul>
+				<ul class="mui-table-view mui-grid-view"><h4>装修效果图</h4>
+				    <li class="mui-table-view-cell mui-media mui-col-xs-6">
+				        <a href="#">
+				            <img class="mui-media-object" src="img/tuwen1.jpg">
+				            <div class="mui-media-body">客厅</div>
+				        </a>
+				    </li>
+				    <li class="mui-table-view-cell mui-media mui-col-xs-6">
+				        <a href="#">
+				            <img class="mui-media-object" src="img/tuwen2.jpg">
+				            <div class="mui-media-body">卧室</div>
+				        </a>
+				    </li>
+				</ul>
+				<ul class="mui-table-view mui-grid-view">
+				    <li class="mui-table-view-cell mui-media mui-col-xs-6">
+				        <a href="#">
+				            <img class="mui-media-object" src="img/tuwen3.jpg">
+				            <div class="mui-media-body">餐厅</div>
+				        </a>
+				    </li>
+				    <li class="mui-table-view-cell mui-media mui-col-xs-6">
+				        <a href="#">
+				            <img class="mui-media-object" src="img/tuwen4.jpg">
+				            <div class="mui-media-body">儿童房</div>
+				        </a>
+				    </li>
+				</ul>
+				
+				<div class="mui-content">
+				    <div class="mui-row">
+				            <li class="mui-table-view-cell mui-media mui-col-xs-3" style="padding: 0;text-align: center;line-height: 5rem;">						       				
+						           装修风水						   
+				            </li>
+				            <li class="mui-table-view-cell mui-media mui-col-xs-3">
+						        <a href="#">
+						            <img style="height:50px" src="img/zx-know1.png">						           
+						        </a>
+				           </li>				            
+				            <li class="mui-table-view-cell mui-media mui-col-xs-3"  style="padding: 0;text-align: center;line-height: 5rem;">						       				
+						           装修流程						   
+				            </li>
+				            <li class="mui-table-view-cell mui-media mui-col-xs-3">
+						        <a href="#">
+						            <img style="height:50px" class="mui-media-object" src="img/zx-know2.png">						            
+						        </a>
+				          </li>				            				        
+				    </div>
+				</div>
+			    <div class="yyt-search">
+			    	 <input type="text" class="mui-input-clear" placeholder="怎么装修省钱"><span class="mui-icon mui-icon-search"></span>
+			    </div>
+			    <ul class="mui-table-view yyt-infor">
+				    <li class="mui-table-view-cell">
+				        <a class="mui-navigate-right">木质地板有什么颜色都有了解吗？</a>
+				    </li>
+				    <li class="mui-table-view-cell">
+				        <a class="mui-navigate-right">清新时尚的装修风格</a>
+				    </li>
+				    <li class="mui-table-view-cell">
+				        <a class="mui-navigate-right">欧亚纳楼梯质量好吗？</a>
+				    </li>
+				    <li class="mui-table-view-cell">
+				        <a class="mui-navigate-right">上海公积金提取表范本是什么样的？</a>
+				    </li>
+				    <li class="mui-table-view-cell">
+				        <a class="mui-navigate-right">南京青石材价格是多少？</a>
+				    </li>
+				    <li class="mui-table-view-cell yyt-moreinfor">
+				        <a href="#">更多热门问题<span class="mui-icon mui-icon-arrowthinright mui-icon-orange"></span></a>
+				    </li>
+				</ul>
+                <ul class="mui-table-view">
+                	<h4>上海装饰行情</h4>
+                    <li class="mui-table-view-cell mui-media">
+                        <a href="javascript:;">
+                            <img class="mui-media-object mui-pull-left" src="img/tuwen1.jpg">
+                            <div class="mui-media-body">
+                                                                                     幸福
+                                <p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell mui-media">
+                        <a href="javascript:;">
+                            <img class="mui-media-object mui-pull-left" src="img/tuwen2.jpg">
+                            <div class="mui-media-body">
+                                                                                      木屋
+                                <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell mui-media">
+                        <a href="javascript:;">
+                            <img class="mui-media-object mui-pull-left" src="img/tuwen3.jpg">
+                            <div class="mui-media-body">
+                                CBD
+                                <p class="mui-ellipsis">烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>           
+				<ul class="mui-table-view yyt-more">
+				     <li class="mui-table-view-cell mui-media">
+				         <a href="javascript:;">				         
+				             <div class="mui-media-body">
+				                                           热门城市推荐
+				                <span class="mui-icon mui-icon-arrowdown mui-icon-orange"></span>
+				             </div>
+				         </a>
+				     </li>
+				     <li class="mui-table-view-cell mui-media">
+				         <a href="javascript:;">
+				   
+				             <div class="mui-media-body">
+				                 用户反馈
+				                 <p class="mui-ellipsis">使用过程中您有什么意见或建议</p>
+				             </div>
+				         </a>
+				     </li>
+				     <li class="mui-table-view-cell mui-media">
+				         <a href="javascript:;">
+				   
+				             <div class="mui-media-body">
+				                                          咨询热线      
+				                 <span class="mui-icon mui-icon-phone mui-icon-color"></span>				                 	
+				                <span class="mui-icon-color">400-880-880</span>				              
+				             </div>
+				         </a>
+				     </li>
+				 </ul>
+          </div>
+        </div>  
+        <div class="mui-off-canvas-backdrop"></div>
+      </div>
+    </div>
+    <div id="aaa" style="width:1rem;height:1rem"></div>
+    <script src="js/mui.js" type="text/javascript" charset="utf-8"></script>
+    <!--/三级城市列表-->
+    <script src="js/mui.picker.js"></script>
+	<script src="js/mui.poppicker.js"></script>
+	<script src="js/city.data.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+	<!--\三级城市列表-->
+    <script type="text/javascript">
+    	
+    mui.init();
+    (function($){
+    	$(".mui-scroll-wrapper").scroll({
+    		//bounce: false,//滚动条是否有弹力默认是true
+		    //indicators: false, //是否显示滚动条,默认是true
+    	});    	
+    })(mui);
+    // 监听tap事件，解决 a标签 不能跳转页面问题
+	mui('body').on('tap','a',function(){document.location.href=this.href;});
+	//mui('body').on('tap','a',function(){document.location.href=this.href;});
+	//获得slider插件对象
+	var gallery = mui('.mui-slider');
+	gallery.slider({
+	  interval:5000//自动轮播周期，若为0则不自动播放，默认为0；
+	});
+
+    (function($, doc) {
+				$.init();
+				$.ready(function() {
+					
+					//级联示例
+					var cityPicker3 = new $.PopPicker({
+						layer: 3
+					});
+					cityPicker3.setData(cityData3);
+					var showCityPickerButton = doc.getElementById('showCityPicker3');
+					var cityResult3 = doc.getElementById('cityResult3');
+					showCityPickerButton.addEventListener('tap', function(event) {
+						cityPicker3.show(function(items) {
+							cityResult3.innerText = "你选择的城市是:" + (items[0] || {}).text + " " + (items[1] || {}).text + " " + (items[2] || {}).text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+				});
+			})(mui, document);
+	    	    //
+	 
+    </script>
+</body>
+</html>

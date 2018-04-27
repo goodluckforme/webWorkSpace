@@ -21,5 +21,18 @@
 		"refer": [
 			"index.html"
 		]
+	},
+	"home/home.html": {
+		"refer": [
+			"home/widget/detail.html"
+		]
+	},
+	"home/knowledge_System.html": {
+		"resources": [
+			"home/widget/pullrefresh_sub.html"
+		],
+		"refer": [
+			"home/widget/pullrefresh_sub.html"
+		]
 	}
 }

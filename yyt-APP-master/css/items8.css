@@ -1,0 +1,38 @@
+figure{margin:0;padding:0}
+.items8-body{background: #FFFFFF;}
+.items8-f h1{text-align:center;font-size: 19px;padding:20px 0}
+.items8-f h1 span{color:#e54a4a}
+.city label{
+	position: relative;
+	border:1px solid #eee;
+	border-radius:5px;
+	margin:0;
+	}
+.city label:after{
+    content: '';
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-color: #999 transparent transparent transparent;
+	border-top-color: rgb(153, 153, 153);
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+	border-width: 6px;
+	font-size: 0;
+	position: absolute;
+	top: 23px;
+	right: 18px;
+	}
+.city label{
+	width:50%;
+	float:left;
+	}
+.zxb-introduce{}
+.zxb-introduce h2{font-size:20px;text-align: center;margin: 32px auto 26px;}
+.zxb-introduce p{padding:0 2em;}
+
+
+
+
+

@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="css/mui.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <!--App自定义的css-->
+         <link rel="stylesheet" type="text/css" href="css/daojishi.css"/>
+         <link rel="stylesheet" type="text/css" href="css/items4.css"/>
+		<!--<link rel="stylesheet" type="text/css" href="css/app.css" />-->
+
+</head>
+<body>
+    <!-- 主界面不动、菜单移动 -->
+    <!-- 侧滑导航根容器 -->
+    <div class="mui-off-canvas-wrap mui-draggable ">
+      <!-- 菜单容器 -->
+      <aside class="mui-off-canvas-right" id="offCanvasSide">
+        <div class="mui-scroll-wrapper panel">
+          <div class="mui-scroll">
+            <!-- 菜单具体展示内容 -->
+            <!--<div><lable>主题色</lable><input type="color" style="width:10%;height:10px"></div>-->
+            <div class="mui-scroll-title" style="color:#fff">
+            	<a href="#"></a><span><strong style="color:#EC971F">VIP</strong>域雅兔</span>
+            	
+            </div>
+           
+            <div class="mui-scroll-b">
+            	<p style="color:#fff">为了生活美好而战</p>
+            	
+            </div>
+            <ul class="mui-table-view items4-mb-list">
+                    <li class="mui-table-view-cell">
+                        <a href="index.html">
+                                                                                  首页
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a href="#">
+                                                                                 效果图
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a href="#">
+                                                                                 装修攻略
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a href="#">
+                                                                                 免费装修报价
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a href="#">
+                                                                                 装修公司
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a href="#">
+                                                                                 家具特卖商城
+                        </a>
+                    </li>
+                </ul>
+          </div>
+        </div>
+      </aside>
+      <!-- 主页面容器 -->
+      <div class="mui-inner-wrap">
+        <!-- 主页面标题 -->
+    
+        <header class="mui-bar mui-bar-nav">
+          <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-right" href="#offCanvasSide"></a>
+           <span class="mui-icon mui-icon mui-icon mui-icon-search "></span>
+           <h1 class="mui-title yyt-title">家具商城</h1>
+        </header>
+        <nav class="mui-bar mui-bar-tab">
+    	    <a href="index.html" class="mui-tab-item mui-active">
+    	        <span class="mui-icon mui-icon-home"></span>
+    	        <span class="mui-tab-label">首页</span>
+    	       
+    	    </a>
+    	    <a class="mui-tab-item" href="page2.html">
+    	        <span class="mui-icon mui-icon-chatboxes"></span>
+    	        <span class="mui-tab-label">新闻</span>
+    	    </a>
+    	    <a class="mui-tab-item" href="page1.html">
+    	        <span class="mui-icon mui-icon-paperplane"></span>
+    	        <span class="mui-tab-label">中心</span>
+    	    </a>
+    	    <a class="mui-tab-item" href="page4.html">
+    	        <span class="mui-icon mui-icon-gear"></span>
+    	        <span class="mui-tab-label">设置</span>
+    	    </a>
+    	</nav>
+        <div class="mui-content mui-scroll-wrapper">
+          <div class="mui-scroll">
+            <!-- 主界面具体展示内容 -->
+            <div id="slider" class="mui-slider" >
+              <div class="mui-slider-group mui-slider-loop">
+                <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+                <div class="mui-slider-item mui-slider-item-duplicate">
+                  <a href="#">
+                    <img src="img/banner4.jpg">
+                  </a>
+                </div>
+                <!-- 第一张 -->
+                <div class="mui-slider-item">
+                  <a href="#">
+                    <img src="img/banner1.jpg">
+                  </a>
+                </div>
+                <!-- 第二张 -->
+                <div class="mui-slider-item">
+                  <a href="#">
+                    <img src="img/banner2.jpg">
+                  </a>
+                </div>
+                <!-- 第三张 -->
+                <div class="mui-slider-item">
+                  <a href="#">
+                    <img src="img/banner3.jpg">
+                  </a>
+                </div>
+                <!-- 第四张 -->
+                <div class="mui-slider-item">
+                  <a href="#">
+                    <img src="img/banner4.jpg">
+                  </a>
+                </div>
+                <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+                <div class="mui-slider-item mui-slider-item-duplicate">
+                  <a href="#">
+                    <img src="img/banner1.jpg">
+                  </a>
+                </div>
+              </div>
+              <div class="mui-slider-indicator yyt-turnpage">
+                <div class="mui-indicator mui-active"></div>
+                <div class="mui-indicator"></div>
+                <div class="mui-indicator"></div>
+                <div class="mui-indicator"></div>
+              </div>
+            </div>
+           
+            <ul class=" mui-table-view mui-grid-view header-items mui-grid-12 ">
+	            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+	                <a id="nn" href="page1.html">
+	                    <span class="mui-icon mui-icon mui-icon-image" ></span>
+	                    <div class="mui-media-body">装修图库</div>
+	                </a>
+	            </li>
+	            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+	                <a href="items2.html">
+	                    <span class="mui-icon mui-icon-home"></span>
+	                    <div class="mui-media-body">装修攻略</div>
+	                </a>
+	            </li>
+	            
+	            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+	                <a href="items3.html">
+	                    <span class="mui-icon mui-icon-chatbubble"></span>
+	                    <div class="mui-media-body">装修公司</div>
+	                </a>
+	            </li>
+
+            </ul>
+            <div class="items-news">
+            	<h4>好货上<span>头条</span></h4>
+            	<ul class="items-news-ul">
+            		<!--<li><a href="#"><span>【家装五金】</span>好货免费选，满意为止</a></li>-->
+            	</ul>
+            </div>
+            <ul class="mui-table-view">
+			    <li class="mui-table-view-cell">
+			        <a class="mui-navigate-right">
+			        	<h1 class="time-title">限时抢购</h1>
+						<div class="time-item">
+						    <span id="day_show">0天</span>
+						    <em id="hour_show">0时</em>
+						    <em id="minute_show">0分</em>
+						    <em id="second_show">0秒</em>
+						</div>
+			        </a>
+			    </li>
+			    <!--<li class="mui-table-view-cell">
+			        <a class="mui-navigate-right">Item 2</a>
+			    </li>
+			    <li class="mui-table-view-cell">
+			        <a class="mui-navigate-right">Item 3</a>
+			    </li>-->
+			</ul>
+			<ul class="mui-table-view mui-grid-view">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+				    <a href="#">
+				        <img class="mui-media-object" src="img/tuwen3.jpg">
+				        <div class="mui-media-body">餐厅</div>
+				    </a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+				    <a href="#">
+				        <img class="mui-media-object" src="img/tuwen4.jpg">
+				        <div class="mui-media-body">儿童房</div>
+				    </a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+				    <a href="#">
+				        <img class="mui-media-object" src="img/tuwen4.jpg">
+				        <div class="mui-media-body">儿童房</div>
+				    </a>
+				</li>
+		    </ul>
+            
+				<ul class="mui-table-view mui-grid-view">
+					<h4>本周推荐</h4>
+				    <li class="mui-table-view-cell mui-media mui-col-xs-6">
+				        <a href="#">
+				            <img class="mui-media-object" src="img/tuwen1.jpg">
+				            <div class="mui-media-body">客厅</div>
+				        </a>
+				    </li>
+				    <li class="mui-table-view-cell mui-media mui-col-xs-6">
+				        <a href="#">
+				            <img class="mui-media-object" src="img/tuwen2.jpg">
+				            <div class="mui-media-body">卧室</div>
+				        </a>
+				    </li>
+				</ul>
+				<ul class="mui-table-view mui-grid-view">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+				    <a href="#">
+				        <img class="mui-media-object" src="img/tuwen3.jpg">
+				        <div class="mui-media-body">餐厅</div>
+				    </a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+				    <a href="#">
+				        <img class="mui-media-object" src="img/tuwen4.jpg">
+				        <div class="mui-media-body">儿童房</div>
+				    </a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+				    <a href="#">
+				        <img class="mui-media-object" src="img/tuwen4.jpg">
+				        <div class="mui-media-body">儿童房</div>
+				    </a>
+				</li>
+		    </ul>
+				<ul class="mui-table-view mui-grid-view">
+				    <li class="mui-table-view-cell mui-media mui-col-xs-6">
+				        <a href="#">
+				            <img class="mui-media-object" src="img/tuwen3.jpg">
+				            <div class="mui-media-body">餐厅</div>
+				        </a>
+				    </li>
+				    <li class="mui-table-view-cell mui-media mui-col-xs-6">
+				        <a href="#">
+				            <img class="mui-media-object" src="img/tuwen4.jpg">
+				            <div class="mui-media-body">儿童房</div>
+				        </a>
+				    </li>
+				</ul>
+				<!--asdf-->
+				<!--<ul class="mui-table-view mui-grid-view">
+				    <li class="mui-table-view-cell mui-media mui-col-xs-6">
+				        <a href="#">
+				            <img class="mui-media-object" src="img/tuwen3.jpg">
+				          
+				        </a>
+				    </li>
+				    <li class="mui-table-view-cell mui-media mui-col-xs-6 nnnn">
+				        <a href="#">
+				            <img class="mui-media-object" src="img/tuwen4.jpg">
+				            <img class="mui-media-object" src="img/tuwen3.jpg">
+				        </a>
+				    </li>
+				</ul>-->
+				<ul class="boxx">
+					<h4>灯饰照明</h4>
+	    <li class="b">
+			<img src="img/tuwen1.jpg"/>
+			<img src="img/tuwen2.jpg"/>
+		</li>
+		 <li class="a"><img src="img/tuwen4.jpg"/></li>
+  </ul>
+  <ul class="boxx">
+  	 <h4>卫浴用品</h4>
+  	    <li class="a"><img src="img/pubu4.jpg"/></li>
+	    <li class="b">
+			<img src="img/pubu1.jpg"/>
+			<img src="img/pubu2.jpg"/>
+		</li>
+		 
+  </ul>
+				<!--asdf-->
+				<!--asdf-->
+				<div class="mui-content">
+				    <div class="mui-row">
+				        <li class="mui-table-view-cell mui-media mui-col-xs-3" style="padding: 0;text-align: center;line-height: 5rem;">						       				
+						           装修风水						   
+				        </li>
+				        <li class="mui-table-view-cell mui-media mui-col-xs-3">
+						    <a href="#">
+						        <img style="height:50px" src="img/zx-know1.png">						           
+						    </a>
+				        </li>				            
+				        <li class="mui-table-view-cell mui-media mui-col-xs-3"  style="padding: 0;text-align: center;line-height: 5rem;">						       				
+						           装修流程						   
+				        </li>
+				        <li class="mui-table-view-cell mui-media mui-col-xs-3">
+						    <a href="#">
+						        <img style="height:50px" class="mui-media-object" src="img/zx-know2.png">						            
+						    </a>
+				        </li>				            				        
+				    </div>
+				    <div class="tuijian">
+				        <h4>向您推荐</h4>
+				        <ul class="tuijian-L"></ul>
+				        <ul class="tuijian-R"></ul>
+				    </div>
+				    <div class="mui-media-body" style="text-align:center">
+				                                          咨询热线      
+				        <span class="mui-icon mui-icon-phone mui-icon-color"></span>				                 	
+				        <span class="mui-icon-color">400-880-880</span>				              
+			        </div>
+			        <div class="mui-content">
+					    <div class="mui-row">
+					        <div class="mui-col-xs-3 mui-col-sm-3">
+					            <li class="mui-table-view-cell items4-bottom">
+					                <a href="#">
+					                    登陆  
+					                </a>
+					            </li>
+					        </div>
+					        <div class="mui-col-xs-3 mui-col-sm-3">
+					            <li class="mui-table-view-cell items4-bottom" style="border-left:1px solid #C7C7CC;border-right:1px solid #C7C7CC">
+					                <a href="#">
+					                    注册    
+					                </a>
+					            </li>
+					        </div>
+					        <div class="mui-col-xs-3 mui-col-sm-3">
+					            <li class="mui-table-view-cell items4-bottom" style="border-right:1px solid #C7C7CC">
+					                <a href="#">
+					                   APP客户端   
+					                </a>
+					            </li>
+					        </div>
+					        <div class="mui-col-xs-3 mui-col-sm-3">
+					            <li class="mui-table-view-cell items4-bottom">
+					                <a href="#">
+					                  回到顶部
+					                </a>
+					            </li>
+					        </div>
+					    </div>
+					    
+					     <div class="mui-row">
+					        <div class="mui-col-xs-4 mui-col-sm-4">
+					            <li class="mui-table-view-cell items4-bottom">
+					                <a href="#">
+					                    触屏版  
+					                </a>
+					            </li>
+					        </div>
+					        <div class="mui-col-xs-4 mui-col-sm-4">
+					            <li class="mui-table-view-cell items4-bottom" style="border-left:1px solid #C7C7CC;border-right:1px solid #C7C7CC">
+					                <a href="#">
+					                    电脑板    
+					                </a>
+					            </li>
+					        </div>
+					        <div class="mui-col-xs-4 mui-col-sm-4">
+					            <li class="mui-table-view-cell items4-bottom" style="border-right:1px solid #C7C7CC">
+					                <a href="#">
+					                   关于我们   
+					                </a>
+					            </li>
+					        </div>					     
+					    </div>
+					</div>
+				</div>	
+           </div>
+          </div>  
+        <div class="mui-off-canvas-backdrop"></div>
+      </div>
+    </div>
+    
+    <script src="js/mui.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/json.js"></script>
+    <script src="js/daojishi.js"></script>
+    <script type="text/javascript">
+    	
+    mui.init();
+    (function($){
+    	$(".mui-scroll-wrapper").scroll({
+    		//bounce: false,//滚动条是否有弹力默认是true
+		    //indicators: false, //是否显示滚动条,默认是true
+    	});    	
+    })(mui);
+    // 监听tap事件，解决 a标签 不能跳转页面问题
+	mui('body').on('tap','a',function(){document.location.href=this.href;});
+	//mui('body').on('tap','a',function(){document.location.href=this.href;});
+	//获得slider插件对象
+	var gallery = mui('.mui-slider');
+	gallery.slider({
+	  interval:5000//自动轮播周期，若为0则不自动播放，默认为0；
+	});
+	//新闻消息滚动
+          //添加消息       
+		 var oJson={
+			data:[
+			{url:'#1',text1:'【照明灯具】1',text2:'好货免费选，满意为止'},
+			{url:'#2',text1:'【厨房卫浴】2',text2:'好货免费选，满意为止'},
+			{url:'#3',text1:'【精品地板】3',text2:'好货免费选，满意为止'},
+			{url:'#1',text1:'【装修涂漆】4',text2:'好货免费选，满意为止'},
+			{url:'#2',text1:'【厨房卫浴】5',text2:'好货免费选，满意为止'},
+			{url:'#3',text1:'【精品地板】6',text2:'好货免费选，满意为止'},
+			]
+		};
+		
+		for(var i=0;i<oJson.data.length;i++){
+		var oLi='<li><a href="'+oJson.data[i].url+'"><span>'+oJson.data[i].text1+'</span>'+oJson.data[i].text2+'</a></li>';	
+		$(".items-news-ul").append(oLi);
+		}
+		//消息滚动
+		var preIndex=0;
+        var currentIndex=0;
+		var nLth=$(".items-news-ul li").length;
+        function newsMove(){
+        	var preIndex=currentIndex;
+        	preIndex=++currentIndex % nLth;
+        	$(".items-news-ul li").fadeOut(500).eq(preIndex).fadeIn(500);
+        }
+	   setInterval(newsMove,2000);
+
+ 	//瀑布流加载
+    	for(var i=0;i<json.data.length;i++){
+		var chtml='<li><img src="img/'+json.data[i].src+'"><p>'+json.data[i].name+'</p><li>';
+		 if($('.tuijian-L').height()< $('.tuijian-R').height()){
+		  $('.tuijian-L').append(chtml);
+		  }else{
+		  $('.tuijian-R').append(chtml);
+		  }
+		}   
+    </script>
+</body>
+</html>

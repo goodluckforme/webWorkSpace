@@ -1,0 +1,55 @@
+li{list-style-type: none;}	
+.items6-body img{width:100%}
+.items6-form input{
+	border:1px solid #eee;
+	padding:25px
+	}		
+/*表单部分*/
+.items7-btn{margin-top:20px}
+.items7-select1,.items7-select2{overflow: hidden;}
+.items7-select1 label,.items7-select2 label{
+	position: relative;
+	border:1px solid #eee;
+	border-radius:5px;
+	margin:0;
+	}
+.items7-select1 label:after,.items7-select2 label:after{
+    content: '';
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-color: #999 transparent transparent transparent;
+	border-top-color: rgb(153, 153, 153);
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+	border-width: 6px;
+	font-size: 0;
+	position: absolute;
+	top: 23px;
+	right: 18px;
+	}
+.items7-select1 label{
+	width:50%;
+	float:left;
+	}
+.items7-select2 label{
+	width:33%;
+	float:left;
+	}
+.items7-select1 select,.items7-select2 select{margin:2px}
+
+/*底部*报价部分*/
+.items7-footer{
+	text-align: center;
+	background: url(../img/items7-footer-bg.jpg) no-repeat;
+	background-size: contain;
+	background-color:#fff;
+	padding:20px 0;
+
+	}
+
+
+
+
+

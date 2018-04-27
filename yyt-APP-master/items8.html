@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<!--App自定义的css-->
+		<!--三级城市列表-->
+		<link href="css/mui.picker.css" rel="stylesheet" />
+		<link href="css/mui.poppicker.css" rel="stylesheet" />
+		<link href="css/items7.css" rel="stylesheet" />
+		<link href="css/items8.css" rel="stylesheet" />
+	</head>
+	<body>
+	<!-- 主页面容器 -->
+	<div class="mui-inner-wrap">
+	<!-- 主页面标题 -->
+	    <header class="mui-bar mui-bar-nav page1-nav">
+	       <a class="mui-icon mui-icon-arrowleft" href="index.html"></a>
+	       <h1 class="mui-title">装修报价1</h1>
+	     
+	   </header>
+	    <div class="mui-content mui-scroll-wrapper">
+	        <div class="mui-scroll">
+	        <!-- 主界面具体展示内容 -->
+	        <div class="items6-body items8-body">
+	        	<figure>
+	        		<img src="img/items8-banner1.png"/>
+	        	</figure>	           
+	        <!--表单部分-->
+	        <div class="items6-f items8-f">
+	         	<h1>目前已有<span>541332</span>人得到保障</h1>
+	            <form class="mui-input-group items6-form items7-form">
+				    
+				    <input type="text" class="" placeholder="您的称呼">
+	
+				    <input type="tel" class="" placeholder="联系方式">
+				    <div class="city">
+				    	<label>
+				    		<select name="P3"></select>
+				    	</label>
+				    	<label>
+				    		<select name="C3"></select>	
+				    	</label>				    				    	
+				    </div>
+				    									  
+			        <button type="button" class="mui-btn mui-btn-warning mui-btn-block items7-btn">立即申请</button>
+	            </form> 
+			</div>
+			<section class="zxb-introduce">
+				<div class="zxb-introduce zxb-introduce-a">
+					<h2>装修保是什么？</h2>
+					<p>域雅兔在2015年5月份创立“装修保”服务，保障业主装修质量，并为业主监管装修资金。</p>
+					<figure>
+						<img src="img/items8-1.png"/>
+					</figure>
+				</div>
+				<div class="zxb-introduce zxb-introduce-b">
+					<h2>保障一，专业质检</h2>
+					<p>专业质检管家帮你免费质检，帮你把关装修质量问题，提供可靠的建议方案</p>
+					<figure>
+						<img src="img/items8-2.png"/>
+					</figure>
+				</div>
+				<div class="zxb-introduce zxb-introduce-c">
+					<h2>保障二，装修满意后付款</h2>
+					<p>装修款100%托管到土巴兔装修保，服务满意后付当期装修款，极大降低装修风险。</p>
+					<figure>
+						<img src="img/items8-3.png"/>
+					</figure>
+				</div>
+				<div class="zxb-introduce zxb-introduce-d">
+					<h2>保障三，快速维权</h2>
+					<p>装修中有任何问题，电话、网站均可投诉，专属客服12小时内为您处理，满意为止。</p>
+					<figure>
+						<img src="img/items8-4.png"/>
+					</figure>
+				</div>
+			</section>
+	    </div>  
+	    <div class="mui-off-canvas-backdrop"></div>
+	</div>
+	
+	<script src="js/mui.min.js"></script>
+	<!--App自定义的js-->
+	<script src="js/jquery-3.1.0.js"></script>
+	<script src="js/city.js"></script>
+	<script type="text/javascript">
+		//初始化 MUI
+		mui.init();
+		//初始化 类.mui-scroll-wrapper，使其包裹的区域溢出可以上下滚动
+		(function($){
+			$(".mui-scroll-wrapper").scroll();
+		})(mui);
+		//初始化a链接，使其具有链接功能
+		mui('body').on('tap','a',function(){document.location.href=this.href;});							
+		//二级城市列表
+        new PCAS("P3","C3","江苏省","苏州市");
+
+		//底部装修报价
+		
+		</script>
+	</body>
+</html>
+
+
+
+

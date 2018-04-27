@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style>
+		li{list-style-type: none;}	
+		.items5-banner img{width:100%}	
+    	.items5-form input{border:1px solid #eee}
+		.items5-footer button{color:#EC971F}
+		</style>
+		
+	</head>
+
+	<body>
+	<!-- 主页面容器 -->
+	<div class="mui-inner-wrap">
+	<!-- 主页面标题 -->
+	    <header class="mui-bar mui-bar-nav page1-nav">
+	       <a class="mui-icon mui-icon-arrowleft" href="index.html"></a>
+	       <h1 class="mui-title">工艺验房</h1>
+	     
+	   </header>
+	    <div class="mui-content mui-scroll-wrapper">
+	        <div class="mui-scroll">
+	        <!-- 主界面具体展示内容 -->
+	        <div class="items5-banner">
+                <a href="#">
+                    <img src="img/items5-banner.jpg">
+                </a>
+            </div>
+	          <!--表单部分-->
+	         <div class="items5-f">
+	         	<h4 style="border-bottom:1px solid #AAAAAA;padding:1rem 0">
+	         		今日已有<strong>1898</strong>人申请验房
+	         	</h4>
+	            <form class="mui-input-group items5-form">
+				    <input type="text" class="" placeholder="您的称呼">
+				    <input type="tel" class="" placeholder="联系方式">
+				    <input type="text" class="" placeholder="小区名">
+				    <input type="text" class="" placeholder="验房时间(如20170211)">
+					<button type="button" class="mui-btn mui-btn-warning mui-btn-block">立即申请</button>
+				</form> 
+				<p>同一小区同批验房须达到10户，可安排免费验房</p>
+			</div>
+			<div class="items5-banner">
+                <a href="#">
+                    <img src="img/items5-1.jpg">
+                </a>
+            </div>
+            <ul class="mui-table-view mui-grid-view">
+					<h4>新房验收时，常见的<strong>6</strong>大问题</h4>
+				    <li class="mui-table-view-cell mui-media mui-col-xs-12">
+				        <a href="#">
+				            <img class="mui-media-object" src="img/items5-2.jpg">
+				            
+				        </a>
+				    </li>				  
+				    <li class="mui-table-view-cell mui-media mui-col-xs-12">
+				        <a href="#">
+				            <img class="mui-media-object" src="img/items5-3.jpg">
+				           
+				        </a>
+				    </li>				    
+				    <li class="mui-table-view-cell mui-media mui-col-xs-12">
+				        <a href="#">
+				            <img class="mui-media-object" src="img/items5-4.jpg">
+				           
+				        </a>
+				    </li>
+				    <li class="mui-table-view-cell mui-media mui-col-xs-12">
+				        <a href="#">
+				            <img class="mui-media-object" src="img/items5-5.jpg">
+				           
+				        </a>
+				    </li>
+				</ul>
+				<div class="items5-footer">
+					<button type="button" class="mui-btn mui-btn-block">
+						<span class="mui-icon mui-icon-home"></span>
+						申请公益检房
+					</button>
+				</div>
+	    </div>  
+	    <div class="mui-off-canvas-backdrop"></div>
+	</div>
+	
+	
+	<script src="js/mui.min.js"></script>
+	<script src="js/jquery-3.1.0.js"></script>
+	<script type="text/javascript">
+		//初始化 MUI
+		mui.init();
+		//初始化 类.mui-scroll-wrapper，使其包裹的区域溢出可以上下滚动
+		(function($){
+			$(".mui-scroll-wrapper").scroll();
+		})(mui);
+		//初始化a链接，使其具有链接功能
+		mui('body').on('tap','a',function(){document.location.href=this.href;});							
+		
+		</script>
+	
+	</body>
+</html>
+
+
+
+

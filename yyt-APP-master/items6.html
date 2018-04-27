@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style>
+		li{list-style-type: none;}	
+		.items6-body img{width:100%}
+		.items6-form input{border:1px solid #eee}
+		.items6-form p{margin:0}
+		</style>		
+	</head>
+
+	<body>
+	<!-- 主页面容器 -->
+	<div class="mui-inner-wrap">
+	<!-- 主页面标题 -->
+	    <header class="mui-bar mui-bar-nav page1-nav">
+	       <a class="mui-icon mui-icon-arrowleft" href="index.html"></a>
+	       <h1 class="mui-title">装修户型</h1>
+	     
+	   </header>
+	    <div class="mui-content mui-scroll-wrapper">
+	        <div class="mui-scroll">
+	        <!-- 主界面具体展示内容 -->
+	        <div class="items6-body">
+	           <img src="img/items6-1.jpg"/>
+	           <img src="img/items6-2.jpg"/>
+	           <img src="img/items6-3.jpg"/>
+	           <img src="img/items6-4.jpg"/>
+	           <img src="img/items6-5.jpg"/>
+	           <img src="img/items6-6.jpg"/>
+	           <img src="img/items6-7.jpg"/>
+	           <img src="img/items6-8.jpg"/>
+	          <!--表单部分-->
+	         <div class="items6-f">
+	            <form class="mui-input-group items6-form">
+				    <input type="text" class="" placeholder="请输入您的称呼">
+				    <input type="tel" class="" placeholder="请输入您的手机号码">
+				    <input type="tel" class="" placeholder="请选择房屋所在城市">
+				    <p><input type="checkbox">我已阅读并接受<a href="tiaokuan.html">《装修常见问题条款》</a></p>
+					<button type="button" class="mui-btn mui-btn-warning mui-btn-block">立即申请</button>
+				</form> 
+			</div>			          
+			</div>
+	    </div>  
+	    <div class="mui-off-canvas-backdrop"></div>
+	</div>
+	
+	<script src="js/mui.min.js"></script>
+	<script src="js/jquery-3.1.0.js"></script>
+	<script type="text/javascript">
+		//初始化 MUI
+		mui.init();
+		//初始化 类.mui-scroll-wrapper，使其包裹的区域溢出可以上下滚动
+		(function($){
+			$(".mui-scroll-wrapper").scroll();
+		})(mui);
+		//初始化a链接，使其具有链接功能
+		mui('body').on('tap','a',function(){document.location.href=this.href;});							
+		
+		</script>
+	
+	</body>
+</html>
+
+
+
+

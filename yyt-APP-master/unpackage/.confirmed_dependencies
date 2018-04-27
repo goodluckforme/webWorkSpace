@@ -1,0 +1,83 @@
+{
+  "index.html": {
+    "resources": [
+      "js/mui.picker.js",
+      "img/banner4.jpg",
+      "img/tuwen1.jpg",
+      "fonts/mui.ttf",
+      "img/tuwen2.jpg",
+      "img/banner1.jpg",
+      "img/4.jpg",
+      "img/banner3.jpg",
+      "css/mui.css",
+      "css/mui.picker.css",
+      "img/tuwen4.jpg",
+      "js/city.data-3.js",
+      "css/index.css",
+      "img/banner2.jpg",
+      "img/2.jpg",
+      "img/1.png",
+      "css/app.css",
+      "js/view.js",
+      "js/mui.poppicker.js",
+      "img/1.jpg",
+      "js/city.data.js",
+      "js/mui.js",
+      "css/mui.poppicker.css",
+      "img/3.jpg",
+      "img/tuwen3.jpg",
+      "page2.html",
+      "page4.html",
+      "page1.html"
+    ],
+    "refer": [
+      "page2.html",
+      "page4.html",
+      "page1.html"
+    ]
+  },
+  "page2.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "img/logo.png",
+      "index.html",
+      "img/2.jpg",
+      "img/1.jpg",
+      "fonts/mui.ttf",
+      "img/3.jpg",
+      "img/banner1.jpg",
+      "img/banner2.jpg",
+      "img/banner3.jpg",
+      "img/banner4.jpg",
+      "img/tuwen1.jpg",
+      "img/tuwen2.jpg",
+      "img/tuwen3.jpg"
+    ],
+    "refer": [
+      "index.html"
+    ]
+  },
+  "page4.html": {
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "img/logo.png",
+      "js/mui.view.js",
+      "index.html"
+    ],
+    "refer": [
+      "index.html"
+    ]
+  },
+  "page1.html": {
+    "resources": [
+      "index.html",
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "index.html"
+    ]
+  }
+}
