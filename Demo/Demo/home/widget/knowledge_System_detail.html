@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+
+		<style>
+			.mui-control-content {
+				background-color: white;
+				min-height: 215px;
+			}
+			
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">知识体系详情列表页</h1>
+		</header>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider  mui-fullscreen">
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/webviewGroup.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//监听自定义事件，获取新闻详情
+			var index = 0;
+			var data = null;
+			document.addEventListener('get_children', function(event) {
+				index = event.detail.index;
+				//var data = JSON.parse(JSON.stringify(event.detail.data));
+				data = event.detail.data;
+				console.log('data=============' + data);
+				console.log('data.children.length=============' + data.children.length);
+				console.log('data.children.name=============' + data.children[index].name);
+				console.log('index=============' + index);
+				initData();
+			});
+
+			mui.init({
+				swipeBack: false
+			});
+			mui('.mui-scroll-wrapper').scroll({
+				indicators: true //是否显示滚动条
+			});
+			var slider = document.getElementById('slider');
+			var innerChild =
+				"<div id=\"sliderSegmentedControl\" class=\"mui-slider-indicator mui-scroll-wrapper mui-segmented-control mui-segmented-control-inverted\">\n" +
+				"<div id=\"tabContainer\" class=\"mui-scroll\">" +
+				//这里面放  Tab
+				"</div>\n" +
+				"</div>\n";
+
+			function initData() {
+				slider.innerHTML = innerChild;
+				console.log("data.children.length===========" + data.children.length);
+				var tabContainer = slider.querySelector('#tabContainer');
+				var items = [];
+				for(var i = 0; i < data.children.length; i++) {
+					var child = data.children[i];
+					var name = child.name;
+					var id = child.id;
+					console.log("name===========" + name);
+					items[i] = {
+						id: id,
+						url: "tab-top-subpage-1.html",
+						extras: {
+							data: child,
+						}
+					};
+					var tab = document.createElement('a');
+					tab.innerHTML = "<a class=\"mui-control-item\" href=\"#" + id + "\" data-wid=\"tab-top-subpage-1.html\">\n" +
+						name +
+						"</a>";
+					if(i == 0)
+						tab.classList.add('mui-active');
+					tabContainer.appendChild(tab);
+				}
+
+				setTimeout(function() {
+					var _self = plus.webview.currentWebview();
+					var group = new webviewGroup(_self.id, {
+						items: items,
+						onChange: function(obj) {
+							console.log('tabContainer.=============' + tabContainer.childElementCount);
+							var c = tabContainer.querySelector(".mui-control-item.mui-active");
+							console.log('c=============' + c);
+							var index = (parseInt(obj.index) + 1);
+							console.log('obj.index=============' + index);
+							if(c) {
+								c.classList.remove("mui-active");
+							}
+							var target = tabContainer.querySelector(".mui-control-item:nth-child(" + index + ")");
+							console.log('target=============' + target);
+							target.classList.add("mui-active");
+							if(target.scrollIntoView) {
+								target.scrollIntoView();
+							}
+						}
+					});
+				}, 10);
+
+				tabContainer.addEventListener('tap', '.mui-control-item',
+					function(e) {
+						var wid = this.getAttribute("data-wid");
+						alert('wid====' + wid);
+						group.switchTab(wid);
+					})
+			}
+
+			//			var item2 = slider.querySelector('#item2mobile');
+			//			console.log(item2);
+			//			var item3 = slider.querySelector('#item3mobile');
+			//			console.log(item3);
+			//			slider.addEventListener('slide', function(e) {
+			//				if(e.detail.slideNumber === 1) {
+			//					if(item2.querySelector('.mui-loading')) {
+			//						setTimeout(function() {
+			//							var nice2 = item2.querySelector('.mui-scroll');
+			//							console.log('nice2===============' + nice2);
+			//							nice2.innerHTML = "";
+			//						}, 500);
+			//					}
+			//				} else if(e.detail.slideNumber === 2) {
+			//					if(item3.querySelector('.mui-loading')) {
+			//						setTimeout(function() {
+			//							var nice = item3.querySelector('.mui-scroll');
+			//							console.log('nice===============' + nice);
+			//							nice.innerHTML = "";
+			//						}, 500);
+			//					}
+			//				}
+			//			});
+			//没啥卵用 学习一下 querySelector
+			var sliderSegmentedControl = slider.querySelector('#sliderSegmentedControl');
+			var sliderProgressBar = slider.querySelector('#sliderProgressBar');
+			console.log(sliderSegmentedControl);
+			console.log(sliderProgressBar);
+			//窗口隐藏时，重置页面数据
+			mui.plusReady(function() {
+				var self = plus.webview.currentWebview();
+				self.addEventListener("hide", function(e) {
+					window.scrollTo(0, 0);
+					resetData();
+				}, false);
+			})
+			//重置数据
+			function resetData() {
+				var index = 0;
+				var data = null;
+			}
+			//重写返回逻辑
+			mui.back = function() {
+				plus.webview.currentWebview().hide("auto", 300);
+			}
+		</script>
+	</body>
+
+</html>

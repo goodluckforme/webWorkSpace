@@ -34,5 +34,18 @@
 		"refer": [
 			"home/widget/pullrefresh_sub.html"
 		]
+	},
+	"home/widget/pullrefresh_sub.html": {
+		"refer": [
+			"home/widget/knowledge_System_detail.html"
+		]
+	},
+	"home/widget/knowledge_System_detail.html": {
+		"resources": [
+			"home/widget/tab-top-subpage-1.html"
+		],
+		"refer": [
+			"home/widget/tab-top-subpage-1.html"
+		]
 	}
 }

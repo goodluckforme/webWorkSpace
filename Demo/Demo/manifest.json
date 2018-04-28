@@ -178,6 +178,20 @@
 				],
 				"refer": [],
 				"priority": 0
+			},
+			"home/widget/pullrefresh_sub.html": {
+				"resources": [],
+				"refer": [
+					"home/widget/knowledge_System_detail.html"
+				],
+				"priority": 0
+			},
+			"home/widget/knowledge_System_detail.html": {
+				"resources": [
+					"home/widget/tab-top-subpage-1.html"
+				],
+				"refer": [],
+				"priority": 0
 			}
 		},
 		"idle": {

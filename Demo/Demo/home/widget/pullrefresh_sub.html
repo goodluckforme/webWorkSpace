@@ -61,19 +61,51 @@
 							itemContainer.innerHTML =
 								'<div class="title"></div> <ul class = "mui-table-view mui-table-view-chevron"></ul>'
 							itemContainer.querySelector(".title").innerText = data.data[i].name;
-							for(var j = 0; j < data.data[i].children.length; j++) {
-								var li = document.createElement('li');
-								li.classList.add('mui-table-view-cell');
-								li.classList.add('mui-table-view');
-								li.classList.add('mui-table-view-chevron');
-								li.innerHTML = '<a class="mui-navigate-right">' + (data.data[i].children[j].name) + '</a>';
-								//下拉刷新，新纪录插到最前面；
-								itemContainer.insertBefore(li, itemContainer.lastChild);
-								//								itemContainer.appendChild(li);
-							}
-							//muiScroll.insertBefore(itemContainer, muiScroll.firstChild)
-							muiScroll.appendChild(itemContainer);
-						}
+							var orangeData = data.data[i];
+							(function(orangeData) {
+								for(var j = 0; j < orangeData.children.length; j++) {
+									var li = document.createElement('li');
+									li.classList.add('mui-table-view-cell');
+									li.classList.add('mui-table-view');
+									li.classList.add('mui-table-view-chevron');
+									var children = orangeData.children[j];
+									var id = children.id;
+									var name = children.name;
+									li.innerHTML = '<a class="mui-navigate-right">' + name + '</a>';
+									//下拉刷新，新纪录插到最前面；
+									itemContainer.insertBefore(li, itemContainer.lastChild);
+									itemContainer.appendChild(li);
+									//闭包 立即执行函数  避免永远只有一个值 的BUG
+									li.addEventListener('tap', (function(j) {
+										return function() {
+											//触发子窗口变更新闻详情
+											mui.fire(webview_detail, 'get_children', {
+												index: j,
+												data: orangeData /*JSON.stringify()*/ ,
+											});
+											//var nwaiting = plus.nativeUI.showWaiting(); //打开原生加载等待框 
+											setTimeout(function() {
+												webview_detail.show("slide-in-right", 300);
+											}, 150);
+										}
+									})(j))
+									//li.addEventListener('tap', function() {
+									//	//方法三
+									//	//触发子窗口变更新闻详情
+									//	mui.fire(webview_detail, 'get_children', {
+									//		index: j,
+									//		data: orangeData /*JSON.stringify()*/ ,
+									//	});
+									//	//var nwaiting = plus.nativeUI.showWaiting(); //打开原生加载等待框 
+									//	setTimeout(function() {
+									//		webview_detail.show("slide-in-right", 300);
+									//	}, 150);
+									//})
+									muiScroll.appendChild(itemContainer);
+									//muiScroll.insertBefore(itemContainer, muiScroll.firstChild)
+								}
+							})(orangeData)
+						};
 					},
 					error: function(xhr, type, errorThrown) {
 						plus.nativeUI.toast(errorThrown);
@@ -81,19 +113,18 @@
 					}
 				});
 				index = 1;
-				return;
-				setTimeout(function() {
-					var table = document.body.querySelector('.mui-table-view');
-					var cells = document.body.querySelectorAll('.mui-table-view-cell');
-					for(var i = cells.length, len = i + 3; i < len; i++) {
-						var li = document.createElement('li');
-						li.className = 'mui-table-view-cell';
-						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
-						//下拉刷新，新纪录插到最前面；
-						table.insertBefore(li, table.firstChild);
-					}
-					mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
-				}, 1500);
+//				setTimeout(function() {
+//					var table = document.body.querySelector('.mui-table-view');
+//					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+//					for(var i = cells.length, len = i + 3; i < len; i++) {
+//						var li = document.createElement('li');
+//						li.className = 'mui-table-view-cell';
+//						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
+//						//下拉刷新，新纪录插到最前面；
+//						table.insertBefore(li, table.firstChild);
+//					}
+//					mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+//				}, 1500);
 			}
 
 			var count = 0;
@@ -103,16 +134,15 @@
 			function pullupRefresh() {
 				setTimeout(function() {
 					mui('#pullrefresh').pullRefresh().disablePullupToRefresh();
-					return;
-					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
-					var table = document.body.querySelector('.mui-table-view');
-					var cells = document.body.querySelectorAll('.mui-table-view-cell');
-					for(var i = cells.length, len = i + 5; i < len; i++) {
-						var li = document.createElement('li');
-						li.className = 'mui-table-view-cell';
-						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
-						table.appendChild(li);
-					}
+//					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
+//					var table = document.body.querySelector('.mui-table-view');
+//					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+//					for(var i = cells.length, len = i + 5; i < len; i++) {
+//						var li = document.createElement('li');
+//						li.className = 'mui-table-view-cell';
+//						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
+//						table.appendChild(li);
+//					}
 				}, 1500);
 			}
 			//			if (mui.os.plus) {
@@ -127,6 +157,14 @@
 			//					mui('#pullrefresh').pullRefresh().pullupLoading();
 			//				});
 			//			}
+			var webview_detail = null;
+			mui.plusReady(function() {
+				//预加载详情页
+				webview_detail = mui.preload({
+					url: 'knowledge_System_detail.html',
+					id: 'news_detail',
+				});
+			});
 		</script>
 	</body>
 

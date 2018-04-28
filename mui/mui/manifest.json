@@ -166,7 +166,15 @@
 					"examples/setting.html",
 					"examples/beecloud.html",
 					"examples/ajax.html",
-					"examples/guide.html"
+					"examples/guide.html",
+					"examples/indexed-list.html",
+					"examples/imageviewer.html",
+					"examples/indexed-list-select.html",
+					"examples/tabbar.html",
+					"examples/tabbar-with-submenus.html",
+					"examples/tab-webview-main.html",
+					"examples/tab-top-webview-main.html",
+					"examples/tab-with-segmented-control.html"
 				],
 				"priority": 0
 			},
@@ -1015,6 +1023,18 @@
 				"resources": [],
 				"refer": [
 					"examples/best-practices/list-to-detail/detail.html"
+				],
+				"priority": 0
+			},
+			"examples/tab-top-webview-main.html": {
+				"resources": [
+					"examples/tab-top-subpage-1.html"
+				],
+				"refer": [
+					"examples/tab-top-subpage-2.html",
+					"examples/tab-top-subpage-3.html",
+					"examples/tab-top-subpage-4.html",
+					"examples/tab-top-subpage-5.html"
 				],
 				"priority": 0
 			}
