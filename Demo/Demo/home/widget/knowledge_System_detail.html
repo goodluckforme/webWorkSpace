@@ -8,15 +8,10 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
-
+		<link rel="stylesheet" type="text/css" href="../../css/my.css" />
 		<style>
-			.mui-control-content {
+			.mui-content {
 				background-color: white;
-				min-height: 215px;
-			}
-			
-			.mui-control-content .mui-loading {
-				margin-top: 50px;
 			}
 		</style>
 	</head>
@@ -45,78 +40,83 @@
 				console.log('data.children.length=============' + data.children.length);
 				console.log('data.children.name=============' + data.children[index].name);
 				console.log('index=============' + index);
-				initData();
 			});
 
 			mui.init({
 				swipeBack: false
 			});
-			mui('.mui-scroll-wrapper').scroll({
-				indicators: true //是否显示滚动条
-			});
+
 			var slider = document.getElementById('slider');
 			var innerChild =
-				"<div id=\"sliderSegmentedControl\" class=\"mui-slider-indicator mui-scroll-wrapper mui-segmented-control mui-segmented-control-inverted\">\n" +
-				"<div id=\"tabContainer\" class=\"mui-scroll\">" +
+				"<div id=\"sliderSegmentedControl\" class=\"mui-row mui-slider-indicator mui-scroll-wrapper mui-segmented-control mui-segmented-control-inverted\">\n" +
+				"<div id=\"tabContainer\" class=\"mui-scroll \">" +
 				//这里面放  Tab
 				"</div>\n" +
+				"<div  class=\"line\">" +
+				'</div>' +
 				"</div>\n";
 
+			var items = [];
+
 			function initData() {
+				console.log("===========initData===========");
+				var group;
+				items = [];
 				slider.innerHTML = innerChild;
-				console.log("data.children.length===========" + data.children.length);
 				var tabContainer = slider.querySelector('#tabContainer');
-				var items = [];
+				tabContainer.setAttribute('style', 'background-color: #FFFFFF');
 				for(var i = 0; i < data.children.length; i++) {
 					var child = data.children[i];
 					var name = child.name;
 					var id = child.id;
-					console.log("name===========" + name);
+					//console.log("name===========" + name);
+					var url = "knowledge_system_item_detail.html";
 					items[i] = {
 						id: id,
-						url: "tab-top-subpage-1.html",
+						url: url,
 						extras: {
 							data: child,
 						}
 					};
 					var tab = document.createElement('a');
-					tab.innerHTML = "<a class=\"mui-control-item\" href=\"#" + id + "\" data-wid=\"tab-top-subpage-1.html\">\n" +
-						name +
-						"</a>";
+					//tab.innerHTML = "<a class=\"mui-control-item\" href=\"#" + id + "\" data-wid=\"tab-top-subpage-1.html\">\n" +
+					//name +
+					//"</a>";
+					tab.classList.add('mui-control-item');
+					tab.setAttribute('data-wid', id);
+					tab.innerText = name;
+					tab.setAttribute('style', 'background-color: #FFFFFF');
 					if(i == 0)
 						tab.classList.add('mui-active');
-					tabContainer.appendChild(tab);
-				}
-
-				setTimeout(function() {
-					var _self = plus.webview.currentWebview();
-					var group = new webviewGroup(_self.id, {
-						items: items,
-						onChange: function(obj) {
-							console.log('tabContainer.=============' + tabContainer.childElementCount);
-							var c = tabContainer.querySelector(".mui-control-item.mui-active");
-							console.log('c=============' + c);
-							var index = (parseInt(obj.index) + 1);
-							console.log('obj.index=============' + index);
-							if(c) {
-								c.classList.remove("mui-active");
-							}
-							var target = tabContainer.querySelector(".mui-control-item:nth-child(" + index + ")");
-							console.log('target=============' + target);
-							target.classList.add("mui-active");
-							if(target.scrollIntoView) {
-								target.scrollIntoView();
-							}
-						}
-					});
-				}, 10);
-
-				tabContainer.addEventListener('tap', '.mui-control-item',
-					function(e) {
+					tab.addEventListener('tap', function() {
 						var wid = this.getAttribute("data-wid");
-						alert('wid====' + wid);
+						//alert('wid====' + wid);
 						group.switchTab(wid);
 					})
+					tabContainer.appendChild(tab);
+				}
+				var _self = plus.webview.currentWebview();
+				group = new webviewGroup(_self.id, {
+					items: items,
+					onChange: function(obj) {
+						console.log('tabContainer.childElementCount=============' + tabContainer.childElementCount);
+						var c = tabContainer.querySelector(".mui-control-item.mui-active");
+						console.log('c=============' + c);
+						var index = (parseInt(obj.index) + 1);
+						console.log('obj.index=============' + index);
+						if(c) {
+							c.classList.remove("mui-active");
+						}
+						var target = tabContainer.querySelector(".mui-control-item:nth-child(" + index + ")");
+						console.log('target=============' + target);
+						target.classList.add("mui-active");
+						//并不能修改背景
+//						target.setAttribute('style', 'background-color: #FFFFFF');
+						if(target.scrollIntoView) {
+							target.scrollIntoView();
+						}
+					}
+				});
 			}
 
 			//			var item2 = slider.querySelector('#item2mobile');
@@ -143,25 +143,64 @@
 			//				}
 			//			});
 			//没啥卵用 学习一下 querySelector
-			var sliderSegmentedControl = slider.querySelector('#sliderSegmentedControl');
-			var sliderProgressBar = slider.querySelector('#sliderProgressBar');
-			console.log(sliderSegmentedControl);
-			console.log(sliderProgressBar);
+			//			var sliderSegmentedControl = slider.querySelector('#sliderSegmentedControl');
+			//			var sliderProgressBar = slider.querySelector('#sliderProgressBar');
+			//			console.log(sliderSegmentedControl);
+			//			console.log(sliderProgressBar);
 			//窗口隐藏时，重置页面数据
 			mui.plusReady(function() {
-				var self = plus.webview.currentWebview();
-				self.addEventListener("hide", function(e) {
+				var _self = plus.webview.currentWebview();
+				_self.addEventListener("hide", function(e) {
 					window.scrollTo(0, 0);
 					resetData();
 				}, false);
+				_self.addEventListener("show", function() {
+					initData();
+				});
 			})
 			//重置数据
 			function resetData() {
 				var index = 0;
 				var data = null;
+				group = null;
+				slider.innerHTML = innerChild;
+				var _self = plus.webview.currentWebview();
+				group = new webviewGroup(_self.id, {
+					items: [],
+					onChange: function(obj) {
+						console.log('tabContainer.childElementCount=============' + tabContainer.childElementCount);
+						var c = tabContainer.querySelector(".mui-control-item.mui-active");
+						console.log('c=============' + c);
+						var index = (parseInt(obj.index) + 1);
+						console.log('obj.index=============' + index);
+						if(c) {
+							c.classList.remove("mui-active");
+						}
+						var target = tabContainer.querySelector(".mui-control-item:nth-child(" + index + ")");
+						console.log('target=============' + target);
+						target.classList.add("mui-active");
+						if(target.scrollIntoView) {
+							target.scrollIntoView();
+						}
+					}
+				});
 			}
 			//重写返回逻辑
 			mui.back = function() {
+				//				关不掉 蛋疼
+				//				console.log('items.length========' + items.length);
+				//				for(var i = 0; i < items.length; i++) {
+				//					var existence = plus.webview.getWebviewById(items[i].id);
+				//					console.log('知识体系列表页面  关闭id=====' + items[i].id);
+				//					if(existence) {
+				//						existence.close();
+				//						console.log('知识体系列表页面 子页面 existence====' + existence);
+				//						existence = null;
+				//					}
+				//				}
+				//这是个垃圾
+				//				console.log('location.reload()========' + location);
+				//				location.reload();
 				plus.webview.currentWebview().hide("auto", 300);
 			}
 		</script>

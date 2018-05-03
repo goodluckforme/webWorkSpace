@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<style>
+			html,
+			body {
+				background-color: white;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper ">
+			<div class="mui-scroll mui-fullscreen">
+				<ul class="mui-table-view mui-table-view-chevron">
+				</ul>
+			</div>
+		</div>
+		</div>
+		<script src="../../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			mui.init({
+				swipeBack: false,
+				//				keyEventBind: {
+				//					backbutton: false //关闭back按键监听
+				//				},
+				pullRefresh: {
+					container: '#pullrefresh',
+					down: {
+						offset: '0px',
+						auto: true,
+						callback: pulldownRefresh
+					},
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+			var count = 0;
+			var _openw;
+			var id;
+			mui.plusReady(function() {
+				var self = plus.webview.currentWebview();
+				var child = self.data;
+				var name = child.name;
+				console.log('last-child.id=============' + id);
+				id = child.id;
+				console.log('child=============' + child);
+				console.log('child.name=============' + child.name);
+				console.log('child.id=============' + child.id);
+				self.addEventListener('show', function() {
+					alert('=========id====' + id);
+				});
+			});
+			var oldBack = mui.back;
+			mui.back = function() {
+				if(_openw) {
+					console.log('_openw========没有关闭');
+					_openw.close();
+					_openw = null;
+				} else {
+					var currentView = plus.webview.getWebviewById(id);
+					console.log('关闭指定的页面========' + id);
+					if(currentView) {　 // 执行相应的事件
+						// 获取目标口窗口对象
+						currentView.close();
+						currentView = null;
+					} else
+						oldBack();
+				}
+
+			};
+
+			/**
+			 *  下拉刷新获取最新列表 
+			 */
+			function pulldownRefresh() {
+				count = 0;
+				var table = document.body.querySelector('.mui-table-view');
+				table.innerHTML = "";
+				pullupRefresh();
+			}
+			/**
+			 * 上拉加载具体业务实现
+			 */
+			function pullupRefresh() {
+				if(window.plus && plus.networkinfo.getCurrentType() === plus.networkinfo.CONNECTION_NONE) {
+					plus.nativeUI.toast('似乎已断开与互联网的连接', {
+						verticalAlign: 'top'
+					});
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+					mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+					return;
+				}
+				var url = 'http://www.wanandroid.com/article/list/' + count + '/json?cid=' + id;
+				mui.ajax({
+					type: "get",
+					url: url,
+					async: false,
+					dataType: "json",
+					timeout: 1000,
+					success: function(data) {
+						var over = data.data.over;
+						console.log(over);
+						if(!over) {
+							mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+							mui('#pullrefresh').pullRefresh().endPullupToRefresh(over); //参数为true代表没有更多数据了。
+							count++;
+						} else {
+							mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+							mui('#pullrefresh').pullRefresh().disablePulldownToRefresh();
+							mui('#pullrefresh').pullRefresh().endPullupToRefresh(over); //参数为true代表没有更多数据了。
+						}
+						var table = document.body.querySelector('.mui-table-view');
+						var cells = document.body.querySelectorAll('.mui-table-view-cell');
+						for(var i = 0; i < data.data.datas.length; i++) {
+							var li = document.createElement('li');
+							li.className = 'mui-table-view-cell';
+							li.innerHTML = '<a class="mui-navigate-right">' + (data.data.datas[i].title) + '</a>';
+							table.appendChild(li);
+							(function(i) {
+								var link = data.data.datas[i].link;
+								var title = data.data.datas[i].title;
+								li.addEventListener('tap', function() {
+									//非plus环境，直接走href跳转
+									if(!mui.os.plus) {
+										location.href = link;
+										return;
+									}
+									//方法一
+									_openw = mui.openWindow({
+										url: link,
+										id: link,
+										styles: { // 窗口参数 参考5+规范中的WebviewStyle,也就是说WebviewStyle下的参数都可以在此设置
+											titleNView: { // 窗口的标题栏控件
+												autoBackButton: true,
+												titleText: title, // 标题栏文字,当不设置此属性时，默认加载当前页面的标题，并自动更新页面的标题
+												titleColor: "#000000", // 字体颜色,颜色值格式为"#RRGGBB",默认值为"#000000"
+												titleSize: "17px", // 字体大小,默认17px
+												backgroundColor: "#F7F7F7", // 控件背景颜色,颜色值格式为"#RRGGBB",默认值为"#F7F7F7"
+												progress: { // 标题栏控件的进度条样式
+													color: "#00FF00", // 进度条颜色,默认值为"#00FF00"  
+													height: "2px" // 进度条高度,默认值为"2px"         
+												},
+												splitLine: { // 标题栏控件的底部分割线，类似borderBottom
+													color: "#CCCCCC", // 分割线颜色,默认值为"#CCCCCC"  
+													height: "1px" // 分割线高度,默认值为"2px"
+												}
+
+											}
+										},
+										waiting: {
+											autoShow: true, //自动显示等待框，默认为true
+											title: '正在加载...', //等待对话框上显示的提示内容
+										}
+									});
+								})
+							})(i);
+						}
+					},
+					error: function(xhr, type, errorThrown) {
+						plus.nativeUI.toast(errorThrown);
+						mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+					}
+				});
+			}
+		</script>
+	</body>
+
+</html>

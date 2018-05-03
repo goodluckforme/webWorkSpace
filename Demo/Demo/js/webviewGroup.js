@@ -29,13 +29,13 @@ proto._initParent = function() {
 };
 proto._initNativeView = function() {
 	// fixed by wmy 因为沉浸式应用，需要额外加上状态栏高度
-	var statusbar_H = plus.navigator.getStatusbarHeight(); 
+	var statusbar_H = plus.navigator.getStatusbarHeight();
 	this.nativeView = new plus.nativeObj.View('__MUI_TAB_NATIVE', {
-		'top': (83 + statusbar_H) +'px', //这个需要根据顶部导航及顶部选项卡高度自动调整
-		'height': (window.screen.height - 83)+"px",
+		'top': (83 + statusbar_H) + 'px', //这个需要根据顶部导航及顶部选项卡高度自动调整
+		'height': (window.screen.height - 83) + "px",
 		'left': '100%',
 		'width': '100%',
-		"backgroundColor":"#ffffff"
+		"backgroundColor": "#ffffff"
 	});
 	this.nativeView.show();
 };
@@ -163,6 +163,7 @@ proto.switchTab = function(id) {
 	if(id === fromWebview.id) {
 		return;
 	}
+
 	var toWebviewContext = this.webviewContexts[id];
 	var toWebview = toWebviewContext.webview;
 	var fromToLeft = '100%';
@@ -182,8 +183,8 @@ proto.switchTab = function(id) {
 		this._checkDrags(toWebview); //新建的时候均需校验
 	}
 	var self = this;
-//	console.log("current:" + fromWebview.id + ",to:" + fromToLeft);
-//	console.log("next:" + toWebview.id + ",from:" + toFromLeft);
+	//	console.log("current:" + fromWebview.id + ",to:" + fromToLeft);
+	//	console.log("next:" + toWebview.id + ",from:" + toFromLeft);
 
 	plus.webview.startAnimation({
 			'view': fromWebview,

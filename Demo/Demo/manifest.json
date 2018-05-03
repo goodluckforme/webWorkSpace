@@ -154,7 +154,8 @@
 					"examples/actionsheet.html",
 					"home/project.html",
 					"home/knowledge_System.html",
-					"home/website _Navigation.html"
+					"home/website _Navigation.html",
+					"home/knowledge_system.html"
 				],
 				"priority": 0
 			},
@@ -189,6 +190,15 @@
 			"home/widget/knowledge_System_detail.html": {
 				"resources": [
 					"home/widget/tab-top-subpage-1.html"
+				],
+				"refer": [
+					"home/widget/tab-top-subpage-2.html"
+				],
+				"priority": 0
+			},
+			"home/knowledge_system.html": {
+				"resources": [
+					"home/widget/pullrefresh_sub.html"
 				],
 				"refer": [],
 				"priority": 0
