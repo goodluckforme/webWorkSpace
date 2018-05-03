@@ -58,35 +58,37 @@
 				<h1 id="title" class="mui-title">玩安卓MUI版</h1>
 			</header>
 			<div id="drawerContainer" class="mui-content mui-scroll-wrapper">
+				<nav class="mui-bar mui-bar-tab">
+					<a class="mui-tab-item mui-active" href="home/home.html">
+						<span class="mui-icon mui-icon-home"></span>
+						<span class="mui-tab-label">首页</span>
+					</a>
+					<a class="mui-tab-item" href="home/knowledge_system.html">
+						<span class="mui-icon mui-icon-bars"><span class="mui-badge">9</span></span>
+						<span class="mui-tab-label">知识体系</span>
+					</a>
+					<a class="mui-tab-item" href="home/website_Navigation.html">
+						<span class="mui-icon mui-icon-flag"></span>
+						<span class="mui-tab-label">网站导航</span>
+					</a>
+					<a class="mui-tab-item" href="home/project.html">
+						<span class="mui-icon mui-icon-eye"></span>
+						<span class="mui-tab-label">项目</span>
+					</a>
+				</nav>
 				<div id="changeContainer" class="mui-content">
 					<p style="margin: 10px;">侧滑目前和底部导航栏不兼容</p>
 				</div>
-				
-				<nav class="mui-bar mui-bar-tab">
-				<a class="mui-tab-item mui-active" href="home/home.html">
-					<span class="mui-icon mui-icon-home"></span>
-					<span class="mui-tab-label">首页</span>
-				</a>
-				<a class="mui-tab-item" href="home/knowledge_System.html">
-					<span class="mui-icon mui-icon-bars"><span class="mui-badge">9</span></span>
-					<span class="mui-tab-label">知识体系</span>
-				</a>
-				<a class="mui-tab-item" href="home/website _Navigation.html">
-					<span class="mui-icon mui-icon-flag"></span>
-					<span class="mui-tab-label">网站导航</span>
-				</a>
-				<a class="mui-tab-item" href="home/project.html">
-					<span class="mui-icon mui-icon-eye"></span>
-					<span class="mui-tab-label">项目</span>
-				</a>
-			</nav>
 			</div>
 			<div class="mui-off-canvas-backdrop"></div>
 		</div>
 	</div>
 	<script src="js/mui.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-		mui.init();
+		//用子页面抱起来试下
+		mui.init({
+			swipeBack: false, //启用右滑关闭功能,
+		});
 		//主容器
 		var mainContainer = mui('#mainContainer');
 		//侧滑部分
@@ -108,8 +110,21 @@
 		mui('#mainContainer').scroll();
 		mui('#drawerContainer').scroll();
 
+		offCanvasSide.addEventListener('shown', function(e) { //菜单显示完成事件
+			plus.webview.currentWebview().setStyle({
+				'popGesture': 'none'
+			});
+			alert('开启侧滑');
+		});
+		offCanvasSide.addEventListener('hidden', function(e) { //菜单关闭完成事件
+			plus.webview.currentWebview().setStyle({
+				'popGesture': 'close'
+			});
+			alert('关闭侧滑');
+		});
+
 		var subpages = ['home/home.html', 'home/knowledge_system.html',
-			'home/project.html', 'home/website _Navigation.html'
+			'home/project.html', 'home/website_Navigation.html'
 		];
 		var subpage_style = {
 			top: '45px',

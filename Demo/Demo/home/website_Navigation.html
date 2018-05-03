@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>网站导航</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+		<style type="text/css">
+			.mui-btn {
+				float: left;
+				margin-top: 5px;
+				margin-left: 5px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content mui-row">
+
+		</div>
+		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+			mui.plusReady(function() {
+				var url = 'http://www.wanandroid.com/navi/json';
+				mui.ajax({
+					type: "get",
+					url: url,
+					async: false,
+					dataType: "json",
+					timeout: 1000,
+					success: function(data) {
+						var datas = data.data;
+						console.log('datas.length==============' + datas.length);
+						//分类列表
+						for(var i = 0; i < datas.length; i++) {
+							//实体列表
+							var articles = datas[i].articles;
+							var name = datas[i].name;
+							var container = document.querySelector('.mui-content');
+							var aticleView = document.createElement('div');
+							aticleView.innerHTML = "<div class=\"mui-content-padded mui-row\">\n" +
+								"</div>";
+							var span = document.createElement('span');
+							span.innerText = name;
+							span.setAttribute('style', "margin:10px 10px 10px 10px;");
+							aticleView.appendChild(span);
+							container.appendChild(aticleView);
+							console.log('articles.length==============' + articles.length);
+							for(var j = 0; j < articles.length; j++) {
+								var article = articles[j];
+								var sonView = document.createElement('div');
+								var son =
+									"        <button id=\"article\" type=\"button\" class=\"mui-btn\">\n" +
+									article.title +
+									"        </button>\n";
+								sonView.innerHTML = son;
+								(function(link, title) {
+									sonView.addEventListener('tap', function() {
+										return jumptoUrl(link, title);
+									});
+									console.log('link====' + link + '\ntitle====' + title);
+								})(article.link, article.title);
+								aticleView.appendChild(sonView);
+							}
+
+						}
+					},
+					error: function(xhr, type, errorThrown) {
+						plus.nativeUI.toast(xhr + type + errorThrown);
+					}
+				});
+			});
+
+			function jumptoUrl(url, title) {
+				//非plus环境，直接走href跳转
+				if(!mui.os.plus) {
+					location.href = href;
+					return;
+				}
+				//方法一
+				var _openw = mui.openWindow({
+					url: url,
+					id: url,
+					styles: { // 窗口参数 参考5+规范中的WebviewStyle,也就是说WebviewStyle下的参数都可以在此设置
+						titleNView: { // 窗口的标题栏控件
+							autoBackButton: true,
+							titleText: title, // 标题栏文字,当不设置此属性时，默认加载当前页面的标题，并自动更新页面的标题
+							titleColor: "#000000", // 字体颜色,颜色值格式为"#RRGGBB",默认值为"#000000"
+							titleSize: "17px", // 字体大小,默认17px
+							backgroundColor: "#F7F7F7", // 控件背景颜色,颜色值格式为"#RRGGBB",默认值为"#F7F7F7"
+							progress: { // 标题栏控件的进度条样式
+								color: "#00FF00", // 进度条颜色,默认值为"#00FF00"  
+								height: "2px" // 进度条高度,默认值为"2px"         
+							},
+							splitLine: { // 标题栏控件的底部分割线，类似borderBottom
+								color: "#CCCCCC", // 分割线颜色,默认值为"#CCCCCC"  
+								height: "1px" // 分割线高度,默认值为"2px"
+							}
+
+						}
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+						title: '正在加载...', //等待对话框上显示的提示内容
+					}
+				});
+				_openw.show("slide-in-right", 300);
+				var oldBack = mui.back;
+				mui.back = function() {
+					if(_openw) {
+						_openw.close();
+					} else {
+						oldBack();
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>
