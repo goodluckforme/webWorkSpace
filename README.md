@@ -12,7 +12,7 @@ MUI 练习项目</br>
 貌似 活跃在技术前线的程序员总能开到我们Android开发者。</br>
 android 大神从来都不只会一门语言 所谓技多不压身，android程序员可谓是五花八门。</br>
 
-闲谈完后 进入重点：
+闲谈完后 进入重点：</br>
 玩androidH5版项目地址</br>
 [https://github.com/goodluckforme/webWorkSpace/tree/master/Demo/Demo](https://github.com/goodluckforme/webWorkSpace/tree/master/Demo/Demo)</br>
 
@@ -24,10 +24,10 @@ android 大神从来都不只会一门语言 所谓技多不压身，android程�
 ![image](https://o1whyeemo.qnssl.com/image/view/app_screenshots/55a3d3cd7f3b01413e2915e8385c6337/528)</br>
 
 
-厚颜无耻的上传一波赞赏码:
+厚颜无耻的上传一波赞赏码:</br>
 ![image](https://github.com/goodluckforme/webWorkSpace/blob/master/Demo/art/zanshangma.png)</br>
 
-目前存在的问题：
+目前存在的问题：</br>
 1.首页 侧滑和底部导航栏不兼容  侧滑部分会被首页覆盖 这应该是MUI的BUG 目前临时解决,后期如无法解决将考虑删除侧滑。</br>
 2.知识体系部分 知识体系详情页 tab不能跟随滚动。</br>
 3.MUI webViewGroup 存在页面缓存问题。</br>
