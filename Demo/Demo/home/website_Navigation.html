@@ -51,7 +51,7 @@
 							span.setAttribute('style', "margin:10px 10px 10px 10px;");
 							aticleView.appendChild(span);
 							container.appendChild(aticleView);
-							console.log('articles.length==============' + articles.length);
+//							console.log('articles.length==============' + articles.length);
 							for(var j = 0; j < articles.length; j++) {
 								var article = articles[j];
 								var sonView = document.createElement('div');
@@ -64,7 +64,7 @@
 									sonView.addEventListener('tap', function() {
 										return jumptoUrl(link, title);
 									});
-									console.log('link====' + link + '\ntitle====' + title);
+//									console.log('link====' + link + '\ntitle====' + title);
 								})(article.link, article.title);
 								aticleView.appendChild(sonView);
 							}

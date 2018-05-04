@@ -12,7 +12,7 @@
 		<div class="mui-content">
 			<div class="mui-card">
 				<ul class="mui-table-view">
-					<li class="mui-table-view-cell mui-collapse mui-active">
+					<!--<li class="mui-table-view-cell mui-collapse mui-active">
 						<a class="mui-navigate-right" href="#">文字排版</a>
 						<div class="mui-collapse-content">
 							<h1>h1. Heading</h1>
@@ -25,15 +25,153 @@
 								p. 目前最接近原生App效果的框架。
 							</p>
 						</div>
-					</li>
+					</li>-->
 				</ul>
 			</div>
 		</div>
 		<script src="../js/mui.min.js"></script>
 		<script>
-			mui.init({
-				swipeBack: true //启用右滑关闭功能
+			(function($) {
+				$.init({
+					swipeBack: false, //启用右滑关闭功能
+				});
+				var mui_table_view = document.querySelector('.mui-table-view');
+				mui.ajax({
+					type: "get",
+					url: "http://www.wanandroid.com/project/tree/json",
+					async: false,
+					dataType: "json",
+					timeout: 1000,
+					success: function(data) {
+						var datas = data.data;
+						console.log('datas.length====' + datas.length);
+						for(var i = 0; i < datas.length; i++) {
+							var data = datas[i];
+							(function($, index) {
+								var name = data.name;
+								var id = data.id;
+								//								console.log('datas[i].name====' + name);
+								var li = document.createElement('li');
+
+								//mui-active
+								li.innerHTML = "<li class=\"mui-table-view-cell mui-collapse\">\n" +
+									"            <a class=\"mui-navigate-right\" href=\"#\">" +
+									name +
+									"</a>\n" +
+									"            <div class=\"mui-collapse-content\">\n" +
+									//									"              <p>\n" +
+									//									"                p. 目前最接近原生" + i + "+效果的框架。\n" +
+									//									"              </p>\n" +
+									"            </div>\n" +
+									"          </li>"
+								//console.log('添加第' + i + '个Li');
+								var mui_collapse = li.querySelector('.mui-collapse');
+								var mui_collapse_content = li.querySelector('.mui-collapse-content');
+								//								if(index % 2 == 0) {
+								//									mui_collapse.classList.add('mui-active');
+								//								}
+								//console.log(mui_collapse);
+								li.addEventListener('tap', function() {
+									//alert(index);
+									var active = mui_collapse.classList.contains('mui-active');
+									console.log(active);
+									if(!active) {
+										mui_collapse.classList.remove('mui-active');
+										//这个时候去加载自列表
+										getSonDatas(id, mui_collapse_content);
+									} else {
+										mui_collapse.classList.add('mui-active');
+									}
+								});
+								mui_table_view.appendChild(li);
+							})(data, i);
+						}
+						//这玩意有时候有毒
+						//var mui_table_view = $('.mui-table-view');
+					},
+					error: function(xhr, type, errorThrown) {
+						plus.nativeUI.toast(errorThrown);
+					}
+				});
+			})(mui);
+
+			function getSonDatas(cid, mui_collapse_content) {
+				console.log('mui_collapse_content.children.length===' + mui_collapse_content.children.length);
+				if(mui_collapse_content.children.length > 0) return;
+				mui.ajax({
+					type: "get",
+					url: "http://www.wanandroid.com/project/list/1/json?cid=" + cid,
+					async: false,
+					dataType: "json",
+					timeout: 1000,
+					success: function(data) {
+						var datas = data.data.datas
+						console.log(datas.length);
+						for(var i = 0; i < datas.length; i++) {
+							var data = datas[i];
+							var title = data.title;
+							var titleView = document.createElement('p');
+							titleView.innerText = title;
+							mui_collapse_content.appendChild(titleView);
+							(function($) {
+								titleView.addEventListener('tap', function() {
+									jumpDetail($)
+								});
+							})(data);
+						}
+					},
+					error: function(xhr, type, errorThrown) {
+						plus.nativeUI.toast(errorThrown);
+					}
+				});
+			}
+
+			var webview_detail;
+			mui.plusReady(function() {
+				//预加载详情页
+				webview_detail = mui.preload({
+					url: 'widget/detail.html',
+					id: 'news_detail',
+					styles: {
+						"render": "always",
+						"popGesture": "hide",
+						"bounce": "vertical",
+						"bounceBackground": "#efeff4",
+						"titleNView": titleNView
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+						title: '正在加载...', //等待对话框上显示的提示内容
+					}
+				});
 			});
+			var titleNView = { //详情页原生导航配置
+				backgroundColor: '#f7f7f7', //导航栏背景色
+				titleText: '', //导航栏标题
+				titleColor: '#000000', //文字颜色
+				type: 'transparent', //透明渐变样式
+				autoBackButton: true, //自动绘制返回箭头
+				splitLine: { //底部分割线
+					color: '#cccccc'
+				}
+			}
+
+			function jumpDetail(item) {
+				//方法三
+				//触发子窗口变更新闻详情
+				mui.fire(webview_detail, 'get_detail', {
+					item: item,
+				});
+
+				//更改详情页原生导航条信息
+				titleNView.titleText = item.title;
+				webview_detail.setStyle({
+					"titleNView": titleNView
+				});
+				setTimeout(function() {
+					webview_detail.show("slide-in-right", 300);
+				}, 150);
+			}
 		</script>
 	</body>
 

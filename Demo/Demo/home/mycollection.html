@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+	</head>
+
+	<body>
+		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			(function($) {
+				$.plusReady(function() {
+					$.alert('提示:该功能暂不开放', '收藏', function() {
+						$.currentWebview.close();
+					});
+				});
+
+			})(mui);
+		</script>
+	</body>
+
+</html>
