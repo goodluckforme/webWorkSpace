@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>发送邮件</title>
+<style type="text/css">
+	form{
+		visibility: hidden;
+	}
+	.image_container{
+		margin: 0px 12px 0px 12px;
+		float: left;
+		background-color: #8A6DE9;
+	}
+</style>
+	</head>
+
+	<body>
+		<p style="font-size: 24px;">发送邮件</p>
+		<form method="post" action="$_SERVER[PHP_SELF]">
+			<p><label for="post_owner">Your Email Address :</label></p>
+			<input type="email" name="post_owner" id="post_owner" size="40" /><br />
+			<p><label for="post_text">Post Text :</label></p>
+			<p><textarea name="post_text" rows="10" cols="40" style="width: 95%;"></textarea> </p>
+			<input type="hidden" name="topic_id" id="topic_id" value="<?php echo $topic_id;?>" />
+			<button type="submit" name="submit" value="submit">Add Post</button>
+		</form>
+		<p> you Are Viewing : </p>
+		<p><a href="" >HATS></a>BaseBallHat</p>
+		<div class="image_container">
+			<img src="images/60x60.gif" alt="images/60x60.gif"/>
+		</div>
+		<div class="image_container">
+			<p><strong>Description:</strong></p>
+			<p><strong>Prices:</strong></p>
+		</div>
+	</body>
+
+</html>

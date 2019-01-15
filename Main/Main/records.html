@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="UTF-8">
+		<title>浏览全纪录</title>
+	</head>
+
+	<body>
+		<form action="$_SERVER[PHP_SELF]" method="post">
+			<p><label for="sel_id">Select a Record:</label></p><br />
+			<select name="sel_id" name="sel_id" required="required">
+				<option value="">-- Select one --</option>;
+			</select>
+			<br /><button type="submit" name="submit" value="view">View Selected Entry</button>
+		</form>
+		<h1>Record(s) Deleted</h1>
+		<p>Would you like to
+			<a href='$'>Delete anohter</a>?</p>
+
+		<p style="text-align: center;">
+			<a href="addentry.php?master_id =$_POST['sel_id']"> Add info</a>
+			&nbsp;&nbsp;&nbsp;
+			<a href="$_SERVER['PHP_SELF']""> Add info</a>
+		</p>
+	</body>
+
+</html>

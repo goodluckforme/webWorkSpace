@@ -1,78 +1,79 @@
 {
-  "examples/actionsheet-plus.html": {
-    "refer": [
-      "index.html"
-    ]
-  },
-  "index.html": {
-    "refer": [
-      "examples/actionsheet-plus.html",
-      "examples/actionsheet.html",
-      "home/home.html",
-      "home/project.html",
-      "home/knowledge_System.html",
-      "home/website _Navigation.html",
-      "home/knowledge_system.html",
-      "home/website_Navigation.html",
-      "home/widget/slip_view.html",
-      "home/mycollection.html"
-    ],
-    "resources": [
-      "home/home.html"
-    ]
-  },
-  "examples/actionsheet.html": {
-    "refer": [
-      "index.html"
-    ]
-  },
-  "home/home.html": {
-    "refer": [
-      "home/widget/detail.html"
-    ]
-  },
-  "home/knowledge_System.html": {
-    "resources": [
-      "home/widget/pullrefresh_sub.html"
-    ],
-    "refer": [
-      "home/widget/pullrefresh_sub.html"
-    ]
-  },
-  "home/widget/pullrefresh_sub.html": {
-    "refer": [
-      "home/widget/knowledge_System_detail.html",
-      "home/widget/knowledge_system_detail.html"
-    ]
-  },
-  "home/widget/knowledge_System_detail.html": {
-    "resources": [
-      "home/widget/tab-top-subpage-1.html"
-    ],
-    "refer": [
-      "home/widget/tab-top-subpage-1.html",
-      "home/widget/tab-top-subpage-2.html"
-    ]
-  },
-  "home/knowledge_system.html": {
-    "resources": [
-      "home/widget/pullrefresh_sub.html"
-    ],
-    "refer": [
-      "home/widget/pullrefresh_sub.html"
-    ]
-  },
-  "home/project.html": {
-    "refer": [
-      "home/widget/detail.html"
-    ]
-  },
-  "home/widget/knowledge_system_detail.html": {
-    "resources": [
-      "home/widget/knowledge_system_item_detail.html"
-    ],
-    "refer": [
-      "home/widget/knowledge_system_item_detail.html"
-    ]
-  }
+	"examples/actionsheet-plus.html": {
+		"refer": [
+			"index.html"
+		]
+	},
+	"index.html": {
+		"refer": [
+			"examples/actionsheet-plus.html",
+			"examples/actionsheet.html",
+			"home/home.html",
+			"home/project.html",
+			"home/knowledge_System.html",
+			"home/website _Navigation.html",
+			"home/knowledge_system.html",
+			"home/website_Navigation.html",
+			"home/widget/slip_view.html",
+			"home/mycollection.html"
+		],
+		"resources": [
+			"home/home.html"
+		]
+	},
+	"examples/actionsheet.html": {
+		"refer": [
+			"index.html"
+		]
+	},
+	"home/home.html": {
+		"refer": [
+			"home/widget/detail.html",
+			"home/feedback.html"
+		]
+	},
+	"home/knowledge_System.html": {
+		"resources": [
+			"home/widget/pullrefresh_sub.html"
+		],
+		"refer": [
+			"home/widget/pullrefresh_sub.html"
+		]
+	},
+	"home/widget/pullrefresh_sub.html": {
+		"refer": [
+			"home/widget/knowledge_System_detail.html",
+			"home/widget/knowledge_system_detail.html"
+		]
+	},
+	"home/widget/knowledge_System_detail.html": {
+		"resources": [
+			"home/widget/tab-top-subpage-1.html"
+		],
+		"refer": [
+			"home/widget/tab-top-subpage-1.html",
+			"home/widget/tab-top-subpage-2.html"
+		]
+	},
+	"home/knowledge_system.html": {
+		"resources": [
+			"home/widget/pullrefresh_sub.html"
+		],
+		"refer": [
+			"home/widget/pullrefresh_sub.html"
+		]
+	},
+	"home/project.html": {
+		"refer": [
+			"home/widget/detail.html"
+		]
+	},
+	"home/widget/knowledge_system_detail.html": {
+		"resources": [
+			"home/widget/knowledge_system_item_detail.html"
+		],
+		"refer": [
+			"home/widget/knowledge_system_item_detail.html"
+		]
+	}
 }

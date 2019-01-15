@@ -11,5 +11,15 @@
 			"app/notes.html",
 			"app/login.html"
 		]
+	},
+	"list.html": {
+		"refer": [
+			"app/login.html"
+		]
+	},
+	"app/login.html": {
+		"refer": [
+			"app/register.html"
+		]
 	}
 }

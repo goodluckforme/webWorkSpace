@@ -139,7 +139,11 @@
 							console.log(news.banner.cover);
 						},
 						error: function(xhr, type, errorThrown) {
-							plus.nativeUI.toast(errorThrown);
+							if(!mui.os.plus) {
+								alert(errorThrown);
+							} else {
+								plus.nativeUI.toast(errorThrown);
+							}
 							mui('#list').pullRefresh().endPulldownToRefresh();
 						}
 					});
@@ -312,6 +316,18 @@
 					} else {
 						plus.runtime.quit();
 					}
+				}
+
+				function openFeedback() {
+					mui.openWindow({
+						url: "feedback.html",
+						id: "feedback.html",
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+							title: '正在加载...', //等待对话框上显示的提示内容
+						}
+
+					});
 				}
 			</script>
 		</div>

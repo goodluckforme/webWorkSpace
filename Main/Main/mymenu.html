@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>ADD Address Book</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	</head>
+
+	<body>
+		<h1>ADD Address Book</h1>
+		<form action="$_SERVER[PHP_SELF]" method="post">
+			<fieldset id="">
+				<legend>First/Last Names:</legend><br />
+				<input type="text" name="f_name" id="f_name" size="30" value="" maxlength="75" required="required" />
+				<input type="text" name="l_name" id="l_name" size="30" value="" maxlength="75" required="required" />
+			</fieldset>
+			<p><label for="address">Street Address:</label>
+				<input type="text" name="address" id="address" value="" size="30" /></p><br/>
+			<fieldset id="">
+				<legend>City/State/Zip</legend><br />
+				<input type="text" name="city" id="city" value="" size="30" maxlength="50" />
+				<input type="text" name="state" id="state" value="" size="5" maxlength="2" />
+				<input type="text" name="zipcode" id="zipcode" value="" size="10" maxlength="10" />
+			</fieldset>
+			<fieldset id="">
+				<legend>Address Type:</legend><br />
+				<input type="radio" name="add_type" id="add_type_h" value="home" checked="checked" /><label for="add_type_h">home</label>
+				<input type="radio" name="add_type" id="add_type_w" value="work" /><label for="add_type_w">work</label>
+				<input type="radio" name="add_type" id="add_type_o" value="ohter" /><label for="add_type_o">ohter</label>
+			</fieldset>
+			<fieldset id="">
+				<legend>Telephone Number :</legend><br />
+				<input type="text" name="tel_number" id="tel_number" size="30" maxlength="25" value="" /><br /><br />
+				<input type="radio" name="tel_type" id="tel_type_h" value="home" checked="checked" /><label for="tel_type_h">home</label>
+				<input type="radio" name="tel_type" id="tel_type_w" value="work" /><label for="tel_type_w">work</label>
+				<input type="radio" name="tel_type" id="tel_type_o" value="ohter" /><label for="tel_type_o">ohter</label>
+			</fieldset>
+
+			<fieldset id="">
+				<legend>Fax Number :</legend><br />
+				<input type="text" name="fax_number" id="fax_number" size="30" maxlength="25" value="" /><br /><br />
+				<input type="radio" name="fax_type" id="fax_type_h" value="home" checked="checked" /><label for="fax_type_h">home</label>
+				<input type="radio" name="fax_type" id="fax_type_w" value="work" /><label for="fax_type_w">work</label>
+				<input type="radio" name="fax_type" id="fax_type_o" value="ohter" /><label for="fax_type_o">ohter</label>
+			</fieldset>
+			<fieldset id="">
+				<legend>Address Number :</legend><br />
+				<input type="text" name="email" id="email" size="30" maxlength="25" value="" /><br /><br />
+				<input type="radio" name="email_type" id="email_type_h" value="home" checked="checked" /><label for="email_type_h">home</label>
+				<input type="radio" name="email_type" id="email_type_w" value="work" /><label for="email_type_w">work</label>
+				<input type="radio" name="email_type" id="email_type_o" value="ohter" /><label for="email_type_o">ohter</label>
+			</fieldset>
+
+			<p><label for="note">Person Note :</label><br />
+				<textarea name="note" rows="3" cols="35"></textarea></p>
+				
+			<button type="submit" name="submit" value="send">Add Entry</button>
+		</form>
+	</body>
+
+</html>

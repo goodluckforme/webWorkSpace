@@ -1,0 +1,661 @@
+<!--HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=UTF-8
+Content-Language: zh-CN
+Transfer-Encoding: chunked
+Date: Wed, 16 May 2018 03:36:04 GMT
+2000
+-->
+<!DOCTYPE html>
+<html style="overflow-x:auto;overflow-y:auto;">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>
+			签到情况查看
+		</title>
+		<meta name="decorator" content="default" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+		<script src="js/mui.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/mui.picker.min.css"/>
+		<script>
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+		</script>
+		
+		<style>
+			#dataTable .mui-table-view-cell p {
+				font-size: 16px;
+			}
+			
+			#dataTable .mui-table-view-cell font {
+				font-size: 14px;
+				padding-left: 16px;
+			}
+			
+			#dataTable .mui-table-view-cell .mui-ellipsis {
+				font-size: 12px;
+				padding-left: 16px;
+			}
+		</style>
+
+	</head>
+
+	<body id="" class="mui-ios mui-ios-9 mui-ios-9-1" style="background-color: #f7f7f7;">
+
+		<header id="" class="mui-bar mui-bar-nav" style="position: fixed; top: 0px; left: 0; z-index: 997;">
+
+			<a class="mui-icon mui-icon-left-nav mui-pull-left" onclick="location.href='/oa/a'"></a>
+			<h1 class="mui-title">签到情况查看</h1>
+
+		</header>
+
+		<div id="" class="mui-content " style="background-color: #fff;">
+
+			<style>
+				.oa-listView:before {
+					background: transparent
+				}
+				
+				.oa-listView:after {
+					background: transparent
+				}
+				
+				.oa-listView ul>li:last:after {
+					background: transparent
+				}
+				
+				.oa-listView:after {
+					background: transparent
+				}
+				
+				.oa-listView .oa-cell-input .oa-cell-input-title td {
+					font-weight: 700;
+					width: 35%;
+				}
+				
+				.oa-listView .oa-cell-input .oa-cell-input-contents td {
+					font-weight: 500;
+					width: 65%;
+				}
+				
+				.oa-listView .oa-cell-input .oa-cell-input-title label {
+					word-break: break-all;
+				}
+				
+				.oa-listView .oa-cell-input .oa-cell-input-contents div:not(.treeselect-div) {
+					border-radius: 3px;
+					border: 1px solid #d8d8d8;
+					width: 100%;
+					padding: 5px 14px;
+					margin-bottom: 0px;
+					font-weight: 500;
+					word-break: break-all;
+					min-height: 34px;
+				}
+				
+				.oa-listView .oa-cell-input input {
+					border-radius: 3px;
+					border: 1px solid #d8d8d8;
+					height: 34px;
+					font-weight: 500;
+					font-size: 14px;
+				}
+				
+				.oa-listView .oa-cell-input input.mui-datetime.oa-datePicker {
+					text-align: left;
+				}
+				
+				.oa-listView .oa-cell-input textarea {
+					border-radius: 3px;
+					border: 1px solid #d8d8d8;
+					font-weight: 500;
+					font-size: 14px;
+				}
+				
+				.oa-listView .oa-cell-inp 2000 ut select {
+					font-size: 14px;
+					font-weight: 500;
+					border-radius: 3px;
+					border: 1px solid #d8d8d8 !important;
+					height: 34px;
+					padding-top: 5px !important;
+					padding-right: 14px;
+					margin-bottom: 0px;
+					appearance: none;
+					-moz-appearance: none;
+					-webkit-appearance: none;
+					background: url("/oa/static/easyui/themes/bootstrap/images/combo_arrow.png") no-repeat scroll right center transparent;
+				}
+				
+				.oa-listView .oa-cell-input .oa-cell-input-table {
+					margin-top: 5px;
+					margin-bottom: 5px;
+					font-size: 14px;
+				}
+			</style>
+			<ul id="dataTable" class="mui-table-view oa-listView">
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="padding:15px 15px 0px 15px;background-color:#e7eaec;">
+
+					<form id="searchForm" action="/oa/a/m/oa/coding/oaCollectCoding/" method="post">
+						<input id="pageNo" name="pageNo" type="hidden" value="" />
+						<input id="pageSize" name="pageSize" type="hidden" value="" />
+
+						<link rel="stylesheet" type="text/css" href="/oa/static/mui-master/examples/hello-mui/css/mui.picker.min.css" />
+						<style>
+							.oa-datePicker {
+								text-align: center;
+								border-radius: 3px;
+								border: 1px solid #d8d8d8;
+								height: 34px;
+								font-weight: 500;
+								font-size: 14px;
+							}
+						</style>
+						<script src="js/mui.picker.min.js"></script>
+						<input class="mui-datetime oa-datePicker" type="text" readonly="readonly" name="searchDate" id="searchDate" value="2018-05" onSelect="search()" placeholder="" />
+						<script>
+							document.querySelector('.oa-datePicker').addEventListener('tap', function() {
+								var options = {
+									"type": "month"
+								};
+								var picker = new mui.DtPicker(options);
+								picker.show(function(rs) {
+									this.value = rs.text;
+									picker.dispose();
+									search();
+								});
+							}, false);
+						</script>
+
+					</form>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-01 星期二
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-02 星期三
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-03 星期四
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									时长不足
+								</span>
+					</p>
+
+					<p style="font-size:14px;">
+						<span class="mui-pull-left" style="padding-left:5px">
+									签到：17:48
+								</span>
+						<span class="mui-pull-right">
+									签退：17:48
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-04 星期五
+								</span>
+						<span class="mui-pull-right" style="color:#8f8f94">
+									正常
+								</span>
+					</p>
+
+					<p style="font-size:14px;">
+						<span class="mui-pull-left" style="padding-left:5px">
+									签到：08:23
+								</span>
+						<span class="mui-pull-right">
+									签退：17:44
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:#f7f7f7">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-05 星期六
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									早退
+								</span>
+					</p>
+
+					<p style="font-size:14px;">
+						<span class="mui-pull-left" style="padding-left:5px">
+									签到：08:09
+								</span>
+						<span class="mui-pull-right">
+									签退：08:09
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:#f7f7f7">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-06 星期日
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-07 星期一
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									早退
+								</span>
+					</p>
+
+					<p style="font-size:14px;">
+						<span class="mui-pull-left" style="padding-left:5px">
+									签到：08:26
+								</span>
+						<span class="mui-pull-right">
+									签退：08:26
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-08 星期二
+								</span>
+						<span class="mui-pull-right" style="color:#8f8f94">
+									正常
+								</span>
+					</p>
+
+					<p style="font-size:14px;">
+						<span class="mui-pull-left" style="padding-left:5px">
+									签到：08:24
+								</span>
+						<span class="mui-pull-right">
+									签退：17:34
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-09 星期三
+								</span>
+						<span class="mui-pull-right" style="color:#8f8f94">
+									正常
+								</span>
+					</p>
+
+					<p style="font-size:14px;">
+						<span class="mui-pull-left" style="padding-left:5px">
+									签到：08:24
+								</span>
+						<span class="mui-pull-right">
+									签退：17:51
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-10 星期四
+								</span>
+						<span class="mui-pull-right" style="color:#8f8f94">
+									正常
+								</span>
+					</p>
+
+					<p style="font-size:14px;">
+						<span class="mui-pull-left" style="padding-left:5px">
+									签到：08:20
+								</span>
+						<span class="mui-pull-right">
+									签退：17:31
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-11 星期五
+								</span>
+						<span class="mui-pull-right" style="color:#8f8f94">
+									正常
+								</span>
+					</p>
+
+					<p style="font-size:14px;">
+						<span class="mui-pull-left" style="padding-left:5px">
+									签到：08:25
+								</span>
+						<span class="mui-pull-right">
+									签退：18:02
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:#f7f7f7">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-12 星期六
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+					1c6e
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:#f7f7f7">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-13 星期日
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-14 星期一
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-15 星期二
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:#dddddd">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-16 星期三
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-17 星期四
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-18 星期五
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:#f7f7f7">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-19 星期六
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:#f7f7f7">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-20 星期日
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-21 星期一
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-22 星期二
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-23 星期三
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-24 星期四
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-25 星期五
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:#f7f7f7">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-26 星期六
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:#f7f7f7">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-27 星期日
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-28 星期一
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-29 星期二
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-30 星期三
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+				<li id="" class="mui-table-view-cell oa-cell-commen" onclick="" style="background-color:">
+
+					<p>
+						<span style="color:black;padding-left:5px">
+									2018-05-31 星期四
+								</span>
+						<span class="mui-pull-right" style="color:rgb(234, 82, 0)">
+									-
+								</span>
+					</p>
+
+				</li>
+
+			</ul>
+
+		</div>
+
+	</body>
+
+</html>
+0

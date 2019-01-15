@@ -166,8 +166,7 @@
 			"rp": false,
 			"splash": false,
 			"push": false
-		},
-		"adid": ""
+		}
 	},
 	"dependencies": {
 		"pages": {
@@ -205,7 +204,8 @@
 			"home/home.html": {
 				"resources": [],
 				"refer": [
-					"home/widget/detail.html"
+					"home/widget/detail.html",
+					"home/feedback.html"
 				],
 				"priority": 0
 			},

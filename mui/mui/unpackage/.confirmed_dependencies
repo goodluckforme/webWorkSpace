@@ -1,54 +1,62 @@
 {
-	"index.html": {
-		"refer": [
-			"index-menu.html",
-			"examples/picker.html",
-			"examples/range.html",
-			"examples/echarts.html",
-			"examples/locker-dom.html",
-			"examples/im-chat.html",
-			"examples/accordion.html",
-			"examples/best-practices/list-to-detail/listview.html",
-			"examples/setting.html",
-			"examples/beecloud.html",
-			"examples/ajax.html",
-			"examples/guide.html",
-			"examples/indexed-list.html",
-			"examples/imageviewer.html",
-			"examples/indexed-list-select.html",
-			"examples/tabbar.html",
-			"examples/tabbar-with-submenus.html",
-			"examples/tab-webview-main.html",
-			"examples/tab-top-webview-main.html",
-			"examples/tab-with-segmented-control.html"
-		]
-	},
-	"examples/best-practices/list-to-detail/listview.html": {
-		"refer": [
-			"examples/best-practices/list-to-detail/detail.html"
-		]
-	},
-	"examples/tab-webview-main.html": {
-		"resources": [
-			"examples/tab-webview-subpage-about.html"
-		],
-		"refer": [
-			"examples/tab-webview-subpage-setting.html",
-			"examples/tab-webview-subpage-chat.html",
-			"examples/tab-webview-subpage-contact.html",
-			"examples/tab-webview-subpage-about.html"
-		]
-	},
-	"examples/tab-top-webview-main.html": {
-		"resources": [
-			"examples/tab-top-subpage-1.html"
-		],
-		"refer": [
-			"examples/tab-top-subpage-2.html",
-			"examples/tab-top-subpage-1.html",
-			"examples/tab-top-subpage-3.html",
-			"examples/tab-top-subpage-4.html",
-			"examples/tab-top-subpage-5.html"
-		]
-	}
+  "index.html": {
+    "refer": [
+      "index-menu.html",
+      "examples/picker.html",
+      "examples/range.html",
+      "examples/echarts.html",
+      "examples/locker-dom.html",
+      "examples/im-chat.html",
+      "examples/accordion.html",
+      "examples/best-practices/list-to-detail/listview.html",
+      "examples/setting.html",
+      "examples/beecloud.html",
+      "examples/ajax.html",
+      "examples/guide.html",
+      "examples/indexed-list.html",
+      "examples/imageviewer.html",
+      "examples/indexed-list-select.html",
+      "examples/tabbar.html",
+      "examples/tabbar-with-submenus.html",
+      "examples/tab-webview-main.html",
+      "examples/tab-top-webview-main.html",
+      "examples/tab-with-segmented-control.html",
+      "examples/feedback.html",
+      "examples/login.html",
+      "examples/ad.html",
+      "examples/dialog.html",
+      "examples/actionsheet-plus.html",
+      "examples/checkbox.html",
+      "examples/card.html",
+      "examples/progressbar.html"
+    ]
+  },
+  "examples/best-practices/list-to-detail/listview.html": {
+    "refer": [
+      "examples/best-practices/list-to-detail/detail.html"
+    ]
+  },
+  "examples/tab-webview-main.html": {
+    "resources": [
+      "examples/tab-webview-subpage-about.html"
+    ],
+    "refer": [
+      "examples/tab-webview-subpage-setting.html",
+      "examples/tab-webview-subpage-chat.html",
+      "examples/tab-webview-subpage-contact.html",
+      "examples/tab-webview-subpage-about.html"
+    ]
+  },
+  "examples/tab-top-webview-main.html": {
+    "resources": [
+      "examples/tab-top-subpage-1.html"
+    ],
+    "refer": [
+      "examples/tab-top-subpage-2.html",
+      "examples/tab-top-subpage-1.html",
+      "examples/tab-top-subpage-3.html",
+      "examples/tab-top-subpage-4.html",
+      "examples/tab-top-subpage-5.html"
+    ]
+  }
 }

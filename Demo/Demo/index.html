@@ -208,10 +208,16 @@
 				var temp = {};
 				temp[targetTab] = "true";
 				mui.extend(aniShow, temp);
-				plus.webview.show(targetTab, "fade-in", 300);
+				if(!mui.os.plus) {
+					location.href = targetTab;
+				} else {
+					plus.webview.show(targetTab, "fade-in", 300);
+				}
 			}
 			//隐藏当前;
-			plus.webview.hide(activeTab);
+			if(mui.os.plus) {
+				plus.webview.hide(activeTab);
+			}
 			//更改当前活跃的选项卡
 			activeTab = targetTab;
 		});
@@ -264,7 +270,7 @@
 					break;
 			}
 		});
-		
+
 		mui.back = function() {
 			if(_openw) {
 				_openw.close();

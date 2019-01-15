@@ -108,23 +108,27 @@
 						};
 					},
 					error: function(xhr, type, errorThrown) {
-						plus.nativeUI.toast(errorThrown);
+						if(mui.os.plus) {
+							plus.nativeUI.toast(errorThrown);
+						} else {
+							alert(errorThrown);
+						}
 						mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
 					}
 				});
 				index = 1;
-//				setTimeout(function() {
-//					var table = document.body.querySelector('.mui-table-view');
-//					var cells = document.body.querySelectorAll('.mui-table-view-cell');
-//					for(var i = cells.length, len = i + 3; i < len; i++) {
-//						var li = document.createElement('li');
-//						li.className = 'mui-table-view-cell';
-//						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
-//						//下拉刷新，新纪录插到最前面；
-//						table.insertBefore(li, table.firstChild);
-//					}
-//					mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
-//				}, 1500);
+				//				setTimeout(function() {
+				//					var table = document.body.querySelector('.mui-table-view');
+				//					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+				//					for(var i = cells.length, len = i + 3; i < len; i++) {
+				//						var li = document.createElement('li');
+				//						li.className = 'mui-table-view-cell';
+				//						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
+				//						//下拉刷新，新纪录插到最前面；
+				//						table.insertBefore(li, table.firstChild);
+				//					}
+				//					mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+				//				}, 1500);
 			}
 
 			var count = 0;
@@ -134,15 +138,15 @@
 			function pullupRefresh() {
 				setTimeout(function() {
 					mui('#pullrefresh').pullRefresh().disablePullupToRefresh();
-//					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
-//					var table = document.body.querySelector('.mui-table-view');
-//					var cells = document.body.querySelectorAll('.mui-table-view-cell');
-//					for(var i = cells.length, len = i + 5; i < len; i++) {
-//						var li = document.createElement('li');
-//						li.className = 'mui-table-view-cell';
-//						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
-//						table.appendChild(li);
-//					}
+					//					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
+					//					var table = document.body.querySelector('.mui-table-view');
+					//					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+					//					for(var i = cells.length, len = i + 5; i < len; i++) {
+					//						var li = document.createElement('li');
+					//						li.className = 'mui-table-view-cell';
+					//						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
+					//						table.appendChild(li);
+					//					}
 				}, 1500);
 			}
 			//			if (mui.os.plus) {

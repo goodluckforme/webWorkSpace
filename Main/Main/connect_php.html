@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+		<meta charset="UTF-8">
+		<title>测试PHP项目访问</title>
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<p><button onclick="getjson()">点我查询PHP 返回jSon</button></p>
+			<p><button onclick="getinfo()">跳转PHP</button></p>
+			<span>返回的结果是:<br /><p id="result"></p></span>
+		</div>
+	</body>
+	<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		function getinfo() {
+			location.href = "http://192.168.1.116/index.php/api/name/getcontent";
+		}
+
+		function getjson() {
+			mui.ajax({
+				type: "get",
+				url: "http://192.168.1.116/index.php/api/name/run",
+				async: false,
+				dataType: "json",
+				timeout: 1000,
+				success: function(data) {
+					console.log(JSON.stringify(data));
+					document.querySelector('#result').innerText = JSON.stringify(data.data);
+				},
+				error: function(xhr, type, errorThrown) {
+					alert(errorThrown);
+				}
+			});
+		}
+	</script>
+
+</html>
